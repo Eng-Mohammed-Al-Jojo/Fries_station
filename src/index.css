@@ -1,0 +1,871 @@
+@import "tailwindcss";
+
+/* ==========================================================
+   FONT FACES — IBM Plex Sans Arabic
+   ========================================================== */
+@font-face {
+  font-family: 'IBM Plex Sans Arabic';
+  src: url('/fonts/IBMPlexSansArabic-Thin.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IBM Plex Sans Arabic';
+  src: url('/fonts/IBMPlexSansArabic-ExtraLight.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IBM Plex Sans Arabic';
+  src: url('/fonts/IBMPlexSansArabic-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IBM Plex Sans Arabic';
+  src: url('/fonts/IBMPlexSansArabic-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IBM Plex Sans Arabic';
+  src: url('/fonts/IBMPlexSansArabic-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IBM Plex Sans Arabic';
+  src: url('/fonts/IBMPlexSansArabic-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IBM Plex Sans Arabic';
+  src: url('/fonts/IBMPlexSansArabic-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ==========================================================
+   TAILWIND THEME — Fries Station Brand Palette
+   Primary:  #C8102E  (Brand Red)
+   Secondary: #1A0A0A (Brand Dark / Near-Black)
+   ========================================================== */
+
+@theme {
+  /* === Brand Red === */
+  --color-primary-50: #fff0f2;
+  --color-primary-100: #ffdce1;
+  --color-primary-200: #ffb3bb;
+  --color-primary-300: #ff8090;
+  --color-primary-400: #f84d62;
+  --color-primary-500: #C8102E;
+  --color-primary-600: #a90e27;
+  --color-primary-700: #8a0b1f;
+  --color-primary-800: #6b0818;
+  --color-primary-900: #4c0511;
+  --color-primary: var(--color-primary-500);
+
+  /* === Brand Dark (Near-Black) === */
+  --color-secondary-50: #f5f0f0;
+  --color-secondary-100: #e0d5d5;
+  --color-secondary-200: #c0a8a8;
+  --color-secondary-300: #9a7070;
+  --color-secondary-400: #6b3a3a;
+  --color-secondary-500: #1A0A0A;
+  --color-secondary-600: #140808;
+  --color-secondary-700: #0e0505;
+  --color-secondary-800: #080303;
+  --color-secondary-900: #000000;
+  --color-secondary: var(--color-secondary-500);
+
+  /* === Shadows === */
+  --shadow-card: 0 8px 24px rgba(200, 16, 46, 0.08);
+  --shadow-floating: 0 12px 32px rgba(200, 16, 46, 0.12);
+  --shadow-button: 0 6px 18px rgba(200, 16, 46, 0.18);
+
+  /* Legacy aliases (kept for any remaining usages) */
+  --shadow-premium: var(--shadow-floating);
+  --shadow-soft: var(--shadow-card);
+}
+
+/* ==========================================================
+   ROOT DESIGN TOKENS — Fries Station
+   ========================================================== */
+:root {
+  /* Brand */
+  --brand-red: #C8102E;
+  --brand-gold: #FFD22E;
+  --brand-gold-deep: #E3A900;
+  --brand-dark: #1A0A0A;
+  --brand-cream: #FFF8E7;
+
+  /* Backgrounds */
+  --bg-main: #FFF6D8;
+  --bg-surface: #FFECA3;
+  --bg-card: #FFFDF2;
+  --bg-hero: #C8102E;
+  --display-yellow: #FFD84A;
+  --display-yellow-soft: #FFEFA6;
+  --display-yellow-pale: #FFF8CF;
+  --display-yellow-row: linear-gradient(135deg, #FFF8CA 0%, #FFE57A 100%);
+  --display-yellow-card: linear-gradient(135deg, #FFFDF0 0%, #FFF1A8 100%);
+  --display-yellow-border: rgba(227, 169, 0, 0.42);
+
+  /* Text */
+  --text-primary: #1A0A0A;
+  --text-secondary: #4A2020;
+  --text-muted: #9A7070;
+  --text-on-red: #FFFFFF;
+  --text-on-gold: #1A0A0A;
+
+  /* Borders */
+  --border-light: rgba(200, 16, 46, 0.08);
+  --border-base: rgba(200, 16, 46, 0.16);
+  --border-strong: rgba(200, 16, 46, 0.30);
+
+  /* Border radius */
+  --radius-sm: 12px;
+  --radius-md: 18px;
+  --radius-lg: 24px;
+  --radius-hero: 40px;
+  --radius-full: 999px;
+
+  /* Legacy aliases */
+  --radius-xl: var(--radius-md);
+  --radius-2xl: var(--radius-lg);
+  --radius-3xl: 32px;
+  --radius-4xl: var(--radius-hero);
+
+  /* Shadows */
+  --shadow-card: 0 10px 26px rgba(227, 169, 0, 0.16);
+  --shadow-floating: 0 16px 38px rgba(227, 169, 0, 0.22);
+  --shadow-button: 0 6px 18px rgba(200, 16, 46, 0.18);
+
+  /* Transitions — one standard for every component */
+  --transition: 250ms ease;
+
+  /* Legacy: menu-* variables pointing to brand tokens */
+  --menu-bg: var(--bg-main);
+  --menu-card-bg: var(--bg-card);
+  --menu-border: var(--border-base);
+  --menu-text: var(--text-primary);
+  --menu-text-muted: var(--text-muted);
+  --menu-primary: var(--brand-red);
+  --border-color: var(--border-base);
+  --bg-main-ref: var(--bg-main);
+}
+
+/* ==========================================================
+   BASE STYLES
+   ========================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  font-family: 'IBM Plex Sans Arabic', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+.menu-wrapper {
+  font-family: 'IBM Plex Sans Arabic', sans-serif;
+}
+
+.category-display-panel {
+  position: relative;
+  padding: clamp(18px, 4vw, 30px);
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(circle at 15% 0%, rgba(255, 255, 255, 0.55), transparent 32%),
+    linear-gradient(145deg, var(--display-yellow-soft) 0%, var(--display-yellow) 100%);
+  border: 1.5px solid var(--display-yellow-border);
+  box-shadow: 0 18px 45px rgba(227, 169, 0, 0.18);
+  overflow: hidden;
+}
+
+.category-display-panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(255,255,255,0.18) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(255,255,255,0.14) 1px, transparent 1px);
+  background-size: 28px 28px;
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.category-display-panel > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ==========================================================
+   GLASS UTILITIES
+   ========================================================== */
+.glass {
+  background: rgba(255, 248, 231, 0.75);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(200, 16, 46, 0.12);
+}
+
+.glass-dark {
+  background: rgba(26, 10, 10, 0.70);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* ==========================================================
+   SCROLLBAR UTILITIES
+   ========================================================== */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(200, 16, 46, 0.20);
+  border-radius: var(--radius-full);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(200, 16, 46, 0.40);
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* ==========================================================
+   ANIMATIONS
+   ========================================================== */
+
+/* Fade + slide up */
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeSlideUp {
+  animation: fadeSlideUp 0.35s ease forwards;
+}
+
+/* Legacy alias */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.35s ease forwards;
+}
+
+/* Slide up (sheet / modal) */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slideUp {
+  animation: slideUp 0.30s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Gentle float — used on hero logo */
+@keyframes brandFloat {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-brandFloat {
+  animation: brandFloat 4s ease-in-out infinite;
+}
+
+/* Gold shimmer — used on loading dots / accents */
+@keyframes goldShimmer {
+  0% {
+    background-position: -200% center;
+  }
+
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.animate-goldShimmer {
+  background: linear-gradient(90deg,
+      var(--brand-gold) 0%,
+      #fff8b0 40%,
+      var(--brand-gold) 80%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: goldShimmer 2.5s linear infinite;
+}
+
+/* Pulse scale — subtle CTA pulse */
+@keyframes pulseScale {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.04);
+  }
+}
+
+.animate-pulseScale {
+  animation: pulseScale 2.2s ease-in-out infinite;
+}
+
+/* Skeleton shimmer */
+@keyframes skeletonShimmer {
+  0% {
+    background-position: -400px 0;
+  }
+
+  100% {
+    background-position: 400px 0;
+  }
+}
+
+.skeleton-shimmer {
+  background: linear-gradient(90deg,
+      rgba(200, 16, 46, 0.04) 25%,
+      rgba(245, 197, 24, 0.08) 50%,
+      rgba(200, 16, 46, 0.04) 75%);
+  background-size: 400px 100%;
+  animation: skeletonShimmer 1.6s ease-in-out infinite;
+}
+
+/* Loading dots bounce */
+@keyframes dotBounce {
+
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.4;
+  }
+
+  50% {
+    transform: translateY(-6px);
+    opacity: 1;
+  }
+}
+
+/* Ring spin */
+@keyframes spinRing {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ==========================================================
+   SWIPER OVERRIDES — match brand
+   ========================================================== */
+.swiper-pagination-bullet-active {
+  background-color: var(--brand-red) !important;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: var(--brand-red) !important;
+  background: white;
+  box-shadow: var(--shadow-card);
+  border-radius: var(--radius-full);
+  width: 40px;
+  height: 40px;
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  font-size: 16px !important;
+}
+
+/* ==========================================================
+   ITEM ROW ENTRY ANIMATION
+   ========================================================== */
+@keyframes itemRowIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.item-row-animate {
+  animation: itemRowIn 0.28s ease forwards;
+}
+
+/* ==========================================================
+   HERO WATERMARK PATTERN
+   ========================================================== */
+.hero-watermark {
+  background-image: url('/logo.png');
+  background-size: 110px;
+  background-repeat: repeat;
+  opacity: 0.06;
+  filter: grayscale(1) brightness(10);
+}
+
+/* ==========================================================
+   ITEM ROW — Premium Overlapping Layout (Logical RTL/LTR)
+   ========================================================== */
+
+.item-row-outer {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  animation: itemRowIn 0.30s ease forwards;
+}
+
+.item-row-outer:not(.unavailable):hover {
+  border-color: rgba(200, 16, 46, 0.28) !important;
+  box-shadow: 0 14px 32px rgba(227, 169, 0, 0.26) !important;
+  transform: translateY(-1px);
+}
+
+/* ── Image container ── */
+.item-image-container {
+  width: 120px;
+  height: 120px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  flex-shrink: 0;
+  z-index: 10;
+  box-shadow:
+    0 6px 16px rgba(200, 16, 46, 0.16),
+    0 12px 28px rgba(200, 16, 46, 0.08);
+  transition: box-shadow var(--transition);
+}
+
+.item-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 320ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  display: block;
+}
+
+/* Hover effects */
+.item-row-outer:not(.unavailable):hover .item-image-container {
+  box-shadow:
+    0 8px 24px rgba(200, 16, 46, 0.22),
+    0 18px 40px rgba(200, 16, 46, 0.14);
+}
+
+.item-row-outer:not(.unavailable):hover .item-image-container img {
+  transform: scale(1.07);
+}
+
+.item-image-container::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 2.5px solid rgba(245, 197, 24, 0.55);
+  pointer-events: none;
+  transition: border-color var(--transition);
+}
+
+.item-row-outer:not(.unavailable):hover .item-image-container::after {
+  border-color: rgba(245, 197, 24, 0.90);
+}
+
+/* ── Card ── */
+.item-card {
+  flex-grow: 1;
+  min-height: 94px;
+  border-radius: var(--radius-lg);
+  background: var(--display-yellow-card);
+  border: 1.5px solid rgba(227, 169, 0, 0.36);
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition:
+    box-shadow var(--transition),
+    border-color var(--transition),
+    transform var(--transition);
+  overflow: hidden;
+}
+
+.item-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.26) 0%,
+    transparent 55%,
+    rgba(200, 16, 46, 0.035) 100%
+  );
+  pointer-events: none;
+}
+
+.item-row-outer:not(.unavailable):hover .item-card {
+  box-shadow: var(--shadow-floating);
+  border-color: rgba(200, 16, 46, 0.30);
+  transform: translateY(-2px);
+}
+
+/* ── Image at START (e.g. Right in RTL, Left in LTR) ── */
+.item-row-outer.image-start {
+  flex-direction: row; /* In RTL: right-to-left layout */
+}
+
+.item-row-outer.image-start .item-card {
+  margin-inline-start: -36px;
+  padding-block: 16px;
+  padding-inline-start: 54px; /* Clears the overlapping image on the start side */
+  padding-inline-end: 20px;
+}
+
+/* ── Image at END (e.g. Left in RTL, Right in LTR) ── */
+.item-row-outer.image-end {
+  flex-direction: row-reverse; /* In RTL: left-to-right layout */
+}
+
+.item-row-outer.image-end .item-card {
+  margin-inline-end: -36px;
+  padding-block: 16px;
+  padding-inline-end: 54px; /* Clears the overlapping image on the end side */
+  padding-inline-start: 20px;
+}
+
+/* ── Accent bar ── */
+.item-card-accent {
+  position: absolute;
+  top: 14px;
+  bottom: 14px;
+  width: 3px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(
+    to bottom,
+    var(--brand-gold),
+    var(--brand-red)
+  );
+}
+
+.item-row-outer.image-start .item-card-accent {
+  inset-inline-start: 0;
+  inset-inline-end: auto;
+}
+
+.item-row-outer.image-end .item-card-accent {
+  inset-inline-end: 0;
+  inset-inline-start: auto;
+}
+
+/* ── Tablet responsive adjustments (≤768px) ── */
+@media (max-width: 768px) {
+  .item-image-container {
+    width: 100px;
+    height: 100px;
+  }
+
+  .item-row-outer.image-start .item-card {
+    margin-inline-start: -28px;
+    padding-inline-start: 44px;
+    padding-inline-end: 14px;
+  }
+
+  .item-row-outer.image-end .item-card {
+    margin-inline-end: -28px;
+    padding-inline-end: 44px;
+    padding-inline-start: 14px;
+  }
+}
+
+/* ── Mobile responsive adjustments (≤480px) ── */
+@media (max-width: 480px) {
+  .item-image-container {
+    width: 84px;
+    height: 84px;
+  }
+
+  .item-row-outer.image-start .item-card {
+    margin-inline-start: -20px;
+    padding-inline-start: 32px;
+    padding-inline-end: 10px;
+    padding-block: 12px;
+  }
+
+  .item-row-outer.image-end .item-card {
+    margin-inline-end: -20px;
+    padding-inline-end: 32px;
+    padding-inline-start: 10px;
+    padding-block: 12px;
+  }
+}
+
+/* ── Floating image container ──────────────────────────── */
+.item-image-float {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 128px;
+  height: 128px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  flex-shrink: 0;
+  /* soft multi-layer shadow for depth */
+  box-shadow:
+    0 4px 12px rgba(200, 16, 46, 0.14),
+    0 12px 32px rgba(200, 16, 46, 0.10),
+    0 2px 6px rgba(0, 0, 0, 0.08);
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+
+.item-image-float img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 320ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  display: block;
+}
+
+/* Hover: zoom image only, no card movement here */
+.item-row-outer:not(.unavailable):hover .item-image-float {
+  box-shadow:
+    0 8px 20px rgba(200, 16, 46, 0.20),
+    0 18px 48px rgba(200, 16, 46, 0.14),
+    0 4px 10px rgba(0, 0, 0, 0.10);
+}
+
+.item-row-outer:not(.unavailable):hover .item-image-float img {
+  transform: scale(1.07);
+}
+
+/* ── Gold border ring on image ─────────────────────────── */
+.item-image-float::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 2.5px solid rgba(245, 197, 24, 0.55);
+  pointer-events: none;
+  transition: border-color var(--transition);
+}
+
+.item-row-outer:not(.unavailable):hover .item-image-float::after {
+  border-color: rgba(245, 197, 24, 0.85);
+}
+
+/* ── The actual card ───────────────────────────────────── */
+.item-card {
+  position: relative;
+  min-height: 96px;
+  border-radius: var(--radius-lg);
+  background: var(--display-yellow-card);
+  border: 1.5px solid rgba(227, 169, 0, 0.36);
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition:
+    box-shadow var(--transition),
+    border-color var(--transition),
+    transform var(--transition),
+    background var(--transition);
+  overflow: hidden;
+}
+
+.item-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.26) 0%,
+    transparent 50%,
+    rgba(200, 16, 46, 0.035) 100%
+  );
+  pointer-events: none;
+}
+
+.item-row-outer:not(.unavailable):hover .item-card {
+  box-shadow: var(--shadow-floating);
+  border-color: rgba(200, 16, 46, 0.30);
+  transform: translateY(-3px);
+}
+
+/* image-left variant: card shifts right, image anchored left */
+.item-row-outer.image-left .item-image-float {
+  left: -36px;
+}
+
+.item-row-outer.image-left .item-card {
+  margin-left: 60px; /* card starts after ~half the image */
+  padding: 18px 20px 18px 24px;
+}
+
+/* image-right variant: card shifts left, image anchored right */
+.item-row-outer.image-right .item-image-float {
+  right: -36px;
+}
+
+.item-row-outer.image-right .item-card {
+  margin-right: 60px;
+  padding: 18px 24px 18px 20px;
+}
+
+/* ── Unavailable state ─────────────────────────────────── */
+.item-row-outer.unavailable {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.item-row-outer.unavailable .item-card {
+  background: rgba(255, 248, 207, 0.58);
+  border-color: rgba(227, 169, 0, 0.18);
+  box-shadow: none;
+}
+
+/* ── Accent bar (thin colored strip on card edge) ──────── */
+.item-card-accent {
+  position: absolute;
+  top: 14px;
+  bottom: 14px;
+  width: 3px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(
+    to bottom,
+    var(--brand-gold),
+    var(--brand-red)
+  );
+  transition: opacity var(--transition);
+}
+
+.item-row-outer.image-left .item-card-accent {
+  left: 0;
+}
+
+.item-row-outer.image-right .item-card-accent {
+  right: 0;
+}
+
+/* ── Responsive — Tablet ───────────────────────────────── */
+@media (max-width: 768px) {
+  .item-image-float {
+    width: 106px;
+    height: 106px;
+  }
+
+  .item-row-outer.image-left .item-image-float {
+    left: -28px;
+  }
+
+  .item-row-outer.image-left .item-card {
+    margin-left: 50px;
+    padding: 14px 16px 14px 18px;
+  }
+
+  .item-row-outer.image-right .item-image-float {
+    right: -28px;
+  }
+
+  .item-row-outer.image-right .item-card {
+    margin-right: 50px;
+    padding: 14px 18px 14px 16px;
+  }
+}
+
+/* ── Responsive — Mobile (small) ──────────────────────── */
+@media (max-width: 480px) {
+  .item-image-float {
+    width: 90px;
+    height: 90px;
+  }
+
+  .item-row-outer.image-left .item-image-float {
+    left: -22px;
+  }
+
+  .item-row-outer.image-left .item-card {
+    margin-left: 42px;
+    padding: 12px 14px 12px 14px;
+  }
+
+  .item-row-outer.image-right .item-image-float {
+    right: -22px;
+  }
+
+  .item-row-outer.image-right .item-card {
+    margin-right: 42px;
+    padding: 12px 14px 12px 14px;
+  }
+}
