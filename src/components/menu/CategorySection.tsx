@@ -60,33 +60,33 @@ export default function CategorySection({
     <div className="w-full category-display-panel" style={{ display: "flex", flexDirection: "column", gap: "28px" }}>
 
       {/* ── Category Header ── */}
-      <div className="flex items-center gap-3" style={{ paddingInline: "4px", paddingBlockEnd: "4px" }}>
-        {/* Red bar accent */}
+      <div className="flex items-center gap-3" style={{ paddingInline: "4px", paddingBlockEnd: "6px" }}>
+        {/* Gradient accent bar */}
         <div
           style={{
             width: "6px",
             height: "38px",
             borderRadius: "var(--radius-full)",
-            background: "var(--brand-red)",
-            boxShadow: "0 5px 14px rgba(200,16,46,0.34)",
+            background: "linear-gradient(to bottom, var(--brand-gold), var(--brand-red))",
+            boxShadow: "0 5px 16px rgba(200,16,46,0.28)",
             flexShrink: 0,
           }}
           aria-hidden="true"
         />
         <h2
-          className="font-bold leading-tight"
+          className="font-black leading-tight"
           style={{
-            fontSize: "clamp(20px, 5vw, 28px)",
+            fontSize: "clamp(20px, 5vw, 26px)",
             color: "var(--text-primary)",
-            textShadow: "0 1px 0 rgba(255,255,255,0.42)",
+            letterSpacing: "-0.01em",
           }}
         >
           {catName}
         </h2>
-        {/* Gold accent dot */}
+        {/* Fade-out line */}
         <div
           className="flex-1 h-px"
-          style={{ background: "linear-gradient(90deg, rgba(200,16,46,0.34), transparent)" }}
+          style={{ background: "linear-gradient(90deg, rgba(200,16,46,0.28), transparent)" }}
           aria-hidden="true"
         />
       </div>
@@ -117,29 +117,28 @@ export default function CategorySection({
             <div className="flex items-center gap-2">
               <div
                 className="flex-1 h-px"
-                style={{ background: "rgba(200,16,46,0.24)" }}
+                style={{ background: "rgba(227,169,0,0.32)" }}
                 aria-hidden="true"
               />
               <span
-                className="font-semibold whitespace-nowrap"
+                className="font-bold whitespace-nowrap"
                 style={{
-                  fontSize: "12px",
+                  fontSize: "11px",
                   paddingBlock: "5px",
-                  paddingInline: "16px",
+                  paddingInline: "14px",
                   borderRadius: "var(--radius-full)",
-                  background: "rgba(255,253,242,0.86)",
-                  color: "var(--brand-red)",
-                  border: "1px solid rgba(200,16,46,0.22)",
-                  boxShadow: "0 6px 18px rgba(227,169,0,0.16)",
-                  letterSpacing: "0",
-                  textTransform: "uppercase",
+                  background: "var(--display-yellow-pale)",
+                  color: "var(--brand-gold-deep)",
+                  border: "1.5px solid rgba(227,169,0,0.32)",
+                  boxShadow: "0 4px 12px rgba(227,169,0,0.20)",
+                  letterSpacing: "0.04em",
                 }}
               >
                 {sub.nameAr}
               </span>
               <div
                 className="flex-1 h-px"
-                style={{ background: "rgba(200,16,46,0.24)" }}
+                style={{ background: "rgba(227,169,0,0.32)" }}
                 aria-hidden="true"
               />
             </div>

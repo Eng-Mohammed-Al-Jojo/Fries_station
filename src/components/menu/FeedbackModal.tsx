@@ -77,63 +77,150 @@ export default function FeedbackModal({ show, onClose }: Props) {
     return (
         <AnimatePresence>
             {show && (
-                <div className="fixed inset-0 z-100 flex items-center justify-center p-4">
+                <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
                     {/* Backdrop */}
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
+                        transition={{ duration: 0.25 }}
                         onClick={onClose}
-                        className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+                        className="absolute inset-0"
+                        style={{ background: "rgba(26,10,10,0.78)", backdropFilter: "blur(10px)" }}
                     />
 
                     {/* Modal */}
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                        initial={{ opacity: 0, scale: 0.93, y: 24 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
-                        exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                        className="relative bg-white/95 backdrop-blur-2xl w-full max-w-md p-8 rounded-[2.5rem] border border-(--border-color) shadow-2xl overflow-y-auto max-h-[90vh] z-10"
+                        exit={{ opacity: 0, scale: 0.93, y: 24 }}
+                        transition={{ type: "spring", damping: 26, stiffness: 300 }}
+                        className="relative w-full max-w-md overflow-y-auto max-h-[90vh] z-10"
+                        style={{
+                            background: "var(--display-yellow-card)",
+                            border: "1.5px solid rgba(227,169,0,0.40)",
+                            borderRadius: "var(--radius-hero)",
+                            boxShadow: "0 32px 64px rgba(26,10,10,0.36), 0 8px 24px rgba(227,169,0,0.18)",
+                            padding: "clamp(24px, 5vw, 40px)",
+                        }}
                     >
-                        <button onClick={onClose} className="absolute top-6 left-6 w-10 h-10 flex items-center justify-center rounded-2xl bg-(--bg-main) text-(--text-muted) hover:text-red-500 transition-all border border-(--border-color)">
-                            <FiX />
+                        {/* Close button */}
+                        <button
+                            onClick={onClose}
+                            aria-label="إغلاق"
+                            className="absolute top-5 end-5 flex items-center justify-center transition-all"
+                            style={{
+                                width: "38px",
+                                height: "38px",
+                                borderRadius: "var(--radius-md)",
+                                background: "rgba(200,16,46,0.08)",
+                                color: "var(--text-muted)",
+                                border: "1.5px solid rgba(200,16,46,0.14)",
+                                cursor: "pointer",
+                            }}
+                            onMouseEnter={(e) => {
+                                e.currentTarget.style.background = "var(--brand-red)";
+                                e.currentTarget.style.color = "white";
+                                e.currentTarget.style.borderColor = "var(--brand-red)";
+                                e.currentTarget.style.transform = "rotate(90deg)";
+                            }}
+                            onMouseLeave={(e) => {
+                                e.currentTarget.style.background = "rgba(200,16,46,0.08)";
+                                e.currentTarget.style.color = "var(--text-muted)";
+                                e.currentTarget.style.borderColor = "rgba(200,16,46,0.14)";
+                                e.currentTarget.style.transform = "rotate(0deg)";
+                            }}
+                        >
+                            <FiX size={18} />
                         </button>
 
-                        <div className="flex flex-col items-center mb-8">
-                            <div className="w-16 h-16 rounded-2xl bg-primary/10 text-primary flex items-center justify-center text-3xl mb-4 shadow-inner">
-                                <FiMessageSquare />
+                        {/* Header */}
+                        <div className="flex flex-col items-center mb-7">
+                            <div
+                                className="flex items-center justify-center mb-4"
+                                style={{
+                                    width: "64px",
+                                    height: "64px",
+                                    borderRadius: "var(--radius-md)",
+                                    background: "var(--brand-gold)",
+                                    boxShadow: "0 8px 24px rgba(227,169,0,0.45)",
+                                }}
+                            >
+                                <FiMessageSquare size={28} color="var(--brand-dark)" />
                             </div>
-                            <h2 className="text-2xl font-black text-(--text-main) text-center">{t('common.feedback_title')}</h2>
-                            <p className="text-sm font-bold text-(--text-muted) text-center mt-1 uppercase tracking-widest opacity-60">{t('common.feedback_desc')}</p>
+                            <h2
+                                className="font-black text-center"
+                                style={{ fontSize: "22px", color: "var(--text-primary)", lineHeight: 1.2 }}
+                            >
+                                {t('common.feedback_title')}
+                            </h2>
+                            <p
+                                className="text-center mt-1 font-semibold uppercase tracking-widest"
+                                style={{ fontSize: "10px", color: "var(--text-muted)", opacity: 0.75 }}
+                            >
+                                {t('common.feedback_desc')}
+                            </p>
                         </div>
 
-                        <div className="space-y-4">
-                            <div className="relative">
-                                <input
-                                    type="text"
-                                    placeholder={t('common.name')}
-                                    value={name}
-                                    onChange={(e) => setName(e.target.value)}
-                                    className="w-full px-5 py-3.5 rounded-2xl bg-(--bg-main)/50 text-(--text-main) border border-(--border-color) focus:border-primary focus:ring-4 focus:ring-primary/5 outline-none transition-all font-bold placeholder:opacity-50"
-                                />
-                            </div>
-                            <div className="relative" dir="ltr">
-                                <input
-                                    type="tel"
-                                    placeholder={t('common.phone')}
-                                    value={phone}
-                                    onChange={(e) => setPhone(e.target.value)}
-                                    dir="ltr"
-                                    className="w-full px-5 py-3.5 rounded-2xl 
-                                                bg-(--bg-main)/50 text-(--text-main) 
-                                                border border-(--border-color) 
-                                                focus:border-primary focus:ring-4 focus:ring-primary/5 
-                                                outline-none transition-all font-bold 
-                                                placeholder:opacity-50 text-right"
-                                />
-                            </div>
+                        {/* Gold divider */}
+                        <div className="admin-gold-separator mb-6" />
+
+                        <div className="flex flex-col gap-4">
+                            {/* Name input */}
+                            <input
+                                type="text"
+                                placeholder={t('common.name')}
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
+                                className="w-full font-semibold outline-none"
+                                style={{
+                                    background: "rgba(255,253,242,0.85)",
+                                    border: "1.5px solid rgba(227,169,0,0.30)",
+                                    borderRadius: "var(--radius-sm)",
+                                    padding: "12px 16px",
+                                    color: "var(--text-primary)",
+                                    fontSize: "14px",
+                                    transition: "border-color var(--transition), box-shadow var(--transition)",
+                                }}
+                                onFocus={(e) => {
+                                    e.target.style.borderColor = "var(--brand-gold-deep)";
+                                    e.target.style.boxShadow = "0 0 0 3px rgba(227,169,0,0.18)";
+                                }}
+                                onBlur={(e) => {
+                                    e.target.style.borderColor = "rgba(227,169,0,0.30)";
+                                    e.target.style.boxShadow = "none";
+                                }}
+                            />
+
+                            {/* Phone input */}
+                            <input
+                                type="tel"
+                                dir="ltr"
+                                placeholder={t('common.phone')}
+                                value={phone}
+                                onChange={(e) => setPhone(e.target.value)}
+                                className="w-full font-semibold outline-none text-right"
+                                style={{
+                                    background: "rgba(255,253,242,0.85)",
+                                    border: "1.5px solid rgba(227,169,0,0.30)",
+                                    borderRadius: "var(--radius-sm)",
+                                    padding: "12px 16px",
+                                    color: "var(--text-primary)",
+                                    fontSize: "14px",
+                                    transition: "border-color var(--transition), box-shadow var(--transition)",
+                                }}
+                                onFocus={(e) => {
+                                    e.target.style.borderColor = "var(--brand-gold-deep)";
+                                    e.target.style.boxShadow = "0 0 0 3px rgba(227,169,0,0.18)";
+                                }}
+                                onBlur={(e) => {
+                                    e.target.style.borderColor = "rgba(227,169,0,0.30)";
+                                    e.target.style.boxShadow = "none";
+                                }}
+                            />
 
                             {/* Stars Rating */}
-                            <div className="flex justify-center gap-2 py-4">
+                            <div className="flex justify-center gap-2 py-3">
                                 {[1, 2, 3, 4, 5].map((star) => (
                                     <button
                                         key={star}
@@ -141,28 +228,78 @@ export default function FeedbackModal({ show, onClose }: Props) {
                                         onMouseEnter={() => setHoverRating(star)}
                                         onMouseLeave={() => setHoverRating(0)}
                                         onClick={() => setRating(star)}
-                                        className="relative p-1 transition-transform hover:scale-125 active:scale-95"
+                                        className="relative transition-transform hover:scale-125 active:scale-95 p-1"
+                                        style={{ background: "none", border: "none", cursor: "pointer" }}
                                     >
                                         <FiStar
-                                            size={32}
-                                            className={`transition-colors duration-300 ${star <= (hoverRating || rating) ? 'text-amber-400 fill-amber-400 drop-shadow-lg' : 'text-(--text-muted) opacity-20'}`}
+                                            size={30}
+                                            style={{
+                                                transition: "color 200ms, fill 200ms",
+                                                color: star <= (hoverRating || rating) ? "var(--brand-gold-deep)" : "rgba(154,112,112,0.3)",
+                                                fill: star <= (hoverRating || rating) ? "var(--brand-gold)" : "none",
+                                                filter: star <= (hoverRating || rating) ? "drop-shadow(0 2px 8px rgba(227,169,0,0.5))" : "none",
+                                            }}
                                         />
                                     </button>
                                 ))}
                             </div>
 
+                            {/* Message textarea */}
                             <textarea
                                 placeholder={t('common.feedback_placeholder')}
                                 value={message}
                                 onChange={(e) => setMessage(e.target.value)}
-                                className="w-full px-5 py-4 rounded-2xl bg-(--bg-main)/50 text-(--text-main) border border-(--border-color) focus:border-primary focus:ring-4 focus:ring-primary/5 outline-none transition-all font-bold resize-none h-32 placeholder:opacity-50"
+                                className="w-full font-semibold outline-none resize-none"
+                                rows={4}
+                                style={{
+                                    background: "rgba(255,253,242,0.85)",
+                                    border: "1.5px solid rgba(227,169,0,0.30)",
+                                    borderRadius: "var(--radius-sm)",
+                                    padding: "12px 16px",
+                                    color: "var(--text-primary)",
+                                    fontSize: "14px",
+                                    lineHeight: 1.6,
+                                    transition: "border-color var(--transition), box-shadow var(--transition)",
+                                }}
+                                onFocus={(e) => {
+                                    e.target.style.borderColor = "var(--brand-gold-deep)";
+                                    e.target.style.boxShadow = "0 0 0 3px rgba(227,169,0,0.18)";
+                                }}
+                                onBlur={(e) => {
+                                    e.target.style.borderColor = "rgba(227,169,0,0.30)";
+                                    e.target.style.boxShadow = "none";
+                                }}
                             />
 
+                            {/* Send button */}
                             <button
                                 onClick={handleSend}
-                                className="w-full py-4 rounded-2xl bg-primary text-white font-black text-lg shadow-xl shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3"
+                                className="w-full flex items-center justify-center gap-3 font-black"
+                                style={{
+                                    height: "52px",
+                                    borderRadius: "var(--radius-sm)",
+                                    background: "var(--brand-red)",
+                                    color: "white",
+                                    border: "none",
+                                    fontSize: "16px",
+                                    cursor: "pointer",
+                                    boxShadow: "var(--shadow-button)",
+                                    transition: "background var(--transition), transform var(--transition), box-shadow var(--transition)",
+                                }}
+                                onMouseEnter={(e) => {
+                                    e.currentTarget.style.background = "var(--color-primary-600)";
+                                    e.currentTarget.style.transform = "translateY(-1px)";
+                                    e.currentTarget.style.boxShadow = "0 12px 30px rgba(200,16,46,0.32)";
+                                }}
+                                onMouseLeave={(e) => {
+                                    e.currentTarget.style.background = "var(--brand-red)";
+                                    e.currentTarget.style.transform = "translateY(0)";
+                                    e.currentTarget.style.boxShadow = "var(--shadow-button)";
+                                }}
+                                onMouseDown={(e) => { e.currentTarget.style.transform = "scale(0.97)"; }}
+                                onMouseUp={(e) => { e.currentTarget.style.transform = "translateY(-1px)"; }}
                             >
-                                <FiSend />
+                                <FiSend size={18} />
                                 {t('common.send_feedback')}
                             </button>
                         </div>
@@ -175,7 +312,17 @@ export default function FeedbackModal({ show, onClose }: Props) {
                                 initial={{ opacity: 0, y: 30, x: "-50%" }}
                                 animate={{ opacity: 1, y: 0, x: "-50%" }}
                                 exit={{ opacity: 0, y: 30, x: "-50%" }}
-                                className="fixed top-10 left-1/2 z-110 bg-primary text-white px-8 py-4 rounded-2xl font-black shadow-2xl border border-white/20 backdrop-blur-md"
+                                className="fixed top-8 left-1/2 z-[110] font-black"
+                                style={{
+                                    background: "var(--brand-red)",
+                                    color: "white",
+                                    padding: "14px 28px",
+                                    borderRadius: "var(--radius-full)",
+                                    boxShadow: "0 16px 40px rgba(200,16,46,0.35)",
+                                    border: "1.5px solid rgba(255,255,255,0.20)",
+                                    backdropFilter: "blur(8px)",
+                                    fontSize: "14px",
+                                }}
                             >
                                 {toast}
                             </motion.div>
@@ -186,4 +333,3 @@ export default function FeedbackModal({ show, onClose }: Props) {
         </AnimatePresence>
     );
 }
-

@@ -31,96 +31,225 @@ export default function PaymentModal({
     if (!isOpen) return null;
 
     const modalContent = (
-        <div className="fixed inset-0 z-9999 flex items-center justify-center p-4 overflow-hidden">
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 overflow-hidden">
+            {/* Backdrop */}
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
+                transition={{ duration: 0.25 }}
                 onClick={onClose}
-                className="absolute inset-0 bg-gray-950/60 backdrop-blur-md"
+                className="absolute inset-0"
+                style={{ background: "rgba(26,10,10,0.80)", backdropFilter: "blur(12px)" }}
             />
 
+            {/* Modal */}
             <motion.div
-                initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                initial={{ opacity: 0, scale: 0.93, y: 24 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                className="relative w-full max-w-lg bg-white rounded-[3rem] shadow-premium flex flex-col max-h-[85vh] overflow-hidden border border-gray-100 z-10"
+                exit={{ opacity: 0, scale: 0.93, y: 24 }}
+                transition={{ type: "spring", damping: 26, stiffness: 300 }}
+                className="relative w-full max-w-lg flex flex-col z-10"
+                style={{
+                    background: "var(--bg-card)",
+                    border: "1.5px solid rgba(227,169,0,0.38)",
+                    borderRadius: "var(--radius-hero)",
+                    boxShadow: "0 32px 72px rgba(26,10,10,0.38), 0 8px 28px rgba(227,169,0,0.16)",
+                    maxHeight: "88vh",
+                    overflow: "hidden",
+                }}
             >
                 {/* Header */}
-                <div className="p-8 border-b border-gray-50 flex items-center justify-between bg-white shrink-0">
-                    <div className="flex items-center gap-5">
-                        <div className="w-14 h-14 rounded-2xl bg-primary/10 text-primary flex items-center justify-center shadow-inner shrink-0">
-                            <FiCreditCard size={28} />
+                <div
+                    className="flex items-center justify-between shrink-0"
+                    style={{
+                        padding: "24px 28px",
+                        borderBottom: "1.5px solid rgba(227,169,0,0.22)",
+                        background: "linear-gradient(135deg, var(--display-yellow-soft) 0%, var(--display-yellow) 100%)",
+                    }}
+                >
+                    <div className="flex items-center gap-4">
+                        <div
+                            className="flex items-center justify-center shrink-0"
+                            style={{
+                                width: "52px",
+                                height: "52px",
+                                borderRadius: "var(--radius-md)",
+                                background: "var(--brand-red)",
+                                boxShadow: "var(--shadow-button)",
+                            }}
+                        >
+                            <FiCreditCard size={24} color="white" />
                         </div>
                         <div>
-                            <h3 className="text-2xl font-black text-gray-900 leading-tight tracking-tight">طرق الدفع</h3>
-                            <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mt-1">بيانات التحويل المعتمدة</p>
+                            <h3
+                                className="font-black leading-tight"
+                                style={{ fontSize: "20px", color: "var(--text-primary)" }}
+                            >
+                                طرق الدفع
+                            </h3>
+                            <p
+                                className="uppercase tracking-widest font-bold mt-0.5"
+                                style={{ fontSize: "9px", color: "var(--text-muted)" }}
+                            >
+                                بيانات التحويل المعتمدة
+                            </p>
                         </div>
                     </div>
+
                     <button
                         onClick={onClose}
-                        className="w-12 h-12 rounded-2xl bg-gray-50 text-gray-400 hover:text-secondary hover:bg-secondary/10 transition-all flex items-center justify-center border border-gray-100"
+                        aria-label="إغلاق"
+                        className="flex items-center justify-center transition-all"
+                        style={{
+                            width: "40px",
+                            height: "40px",
+                            borderRadius: "var(--radius-sm)",
+                            background: "rgba(200,16,46,0.08)",
+                            color: "var(--text-muted)",
+                            border: "1.5px solid rgba(200,16,46,0.14)",
+                            cursor: "pointer",
+                            transition: "all var(--transition)",
+                        }}
+                        onMouseEnter={(e) => {
+                            e.currentTarget.style.background = "var(--brand-red)";
+                            e.currentTarget.style.color = "white";
+                            e.currentTarget.style.borderColor = "var(--brand-red)";
+                            e.currentTarget.style.transform = "rotate(90deg)";
+                        }}
+                        onMouseLeave={(e) => {
+                            e.currentTarget.style.background = "rgba(200,16,46,0.08)";
+                            e.currentTarget.style.color = "var(--text-muted)";
+                            e.currentTarget.style.borderColor = "rgba(200,16,46,0.14)";
+                            e.currentTarget.style.transform = "rotate(0deg)";
+                        }}
                     >
-                        <FiX size={24} />
+                        <FiX size={20} />
                     </button>
                 </div>
 
                 {/* Content */}
-                <div className="flex-1 overflow-y-auto custom-scrollbar p-8 space-y-10">
+                <div
+                    className="flex-1 overflow-y-auto custom-scrollbar"
+                    style={{ padding: "24px 28px", display: "flex", flexDirection: "column", gap: "24px" }}
+                >
                     {isLoading ? (
-                        <div className="space-y-6">
+                        <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
                             {[1, 2, 3].map(i => (
-                                <div key={i} className="space-y-4">
-                                    <div className="h-14 bg-gray-50 rounded-2xl animate-pulse w-1/2" />
-                                    <div className="h-24 bg-gray-50 rounded-3xl animate-pulse" />
+                                <div key={i} style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+                                    {/* Gold shimmer skeleton */}
+                                    <div
+                                        className="skeleton-shimmer"
+                                        style={{ height: "52px", borderRadius: "var(--radius-sm)", width: "55%" }}
+                                    />
+                                    <div
+                                        className="skeleton-shimmer"
+                                        style={{ height: "80px", borderRadius: "var(--radius-md)" }}
+                                    />
                                 </div>
                             ))}
                         </div>
                     ) : enabledMethods.length > 0 ? (
-                        enabledMethods.map((method) => (
-                            <div key={method.id} className="space-y-5">
-                                <div className="flex items-center gap-5 px-1">
-                                    <div className="w-14 h-14 rounded-2xl bg-white border border-gray-100 flex items-center justify-center p-2.5 shadow-sm overflow-hidden shrink-0 group-hover:scale-105 transition-transform">
-                                        {method.image ? (
-                                            <img
-                                                src={method.image.startsWith('/') ? method.image : `/images/payment/${method.image}`}
-                                                alt={method.name}
-                                                className="w-full h-full object-contain"
-                                            />
-                                        ) : <FiCreditCard size={28} className="text-gray-300" />}
-                                    </div>
-                                    <div>
-                                        <h4 className="font-black text-gray-900 text-xl leading-none">{method.name}</h4>
-                                        <div className="flex items-center gap-2 mt-2">
-                                            <span className="text-[9px] font-black text-primary uppercase tracking-widest bg-primary/5 px-3 py-1 rounded-full">
-                                                {method.type === 'cash' ? "نقدي" : method.type === 'wallet' ? "محفظة" : "بنكي"}
-                                            </span>
+                        enabledMethods.map((method, index) => (
+                            <div key={method.id}>
+                                {/* Method card */}
+                                <div
+                                    className="admin-card"
+                                    style={{ padding: "18px 20px", display: "flex", flexDirection: "column", gap: "16px" }}
+                                >
+                                    <div className="flex items-center gap-4">
+                                        <div
+                                            className="flex items-center justify-center shrink-0"
+                                            style={{
+                                                width: "52px",
+                                                height: "52px",
+                                                borderRadius: "var(--radius-sm)",
+                                                background: "var(--display-yellow-pale)",
+                                                border: "1.5px solid rgba(227,169,0,0.28)",
+                                                overflow: "hidden",
+                                                padding: "8px",
+                                            }}
+                                        >
+                                            {method.image ? (
+                                                <img
+                                                    src={method.image.startsWith('/') ? method.image : `/images/payment/${method.image}`}
+                                                    alt={method.name}
+                                                    style={{ width: "100%", height: "100%", objectFit: "contain" }}
+                                                />
+                                            ) : <FiCreditCard size={24} color="var(--text-muted)" />}
+                                        </div>
+                                        <div>
+                                            <h4
+                                                className="font-black leading-none"
+                                                style={{ fontSize: "17px", color: "var(--text-primary)" }}
+                                            >
+                                                {method.name}
+                                            </h4>
+                                            <div style={{ marginTop: "6px" }}>
+                                                <span className="admin-badge-gold">
+                                                    {method.type === 'cash' ? "نقدي" : method.type === 'wallet' ? "محفظة" : "بنكي"}
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
+
+                                    <PaymentFieldsRenderer
+                                        fields={method.paymentFields || []}
+                                        isCash={method.type === 'cash'}
+                                    />
                                 </div>
 
-                                <PaymentFieldsRenderer
-                                    fields={method.paymentFields || []}
-                                    isCash={method.type === 'cash'}
-                                />
-
-                                <div className="h-px bg-gray-50 w-full" />
+                                {/* Separator between methods */}
+                                {index < enabledMethods.length - 1 && (
+                                    <div className="admin-gold-separator" style={{ marginTop: "8px" }} />
+                                )}
                             </div>
                         ))
                     ) : (
-                        <div className="flex flex-col items-center justify-center py-16 text-center space-y-6">
-                            <div className="w-24 h-24 rounded-4xl bg-gray-50 flex items-center justify-center text-5xl">📵</div>
-                            <div>
-                                <h4 className="text-xl font-black text-gray-900">لا توجد وسائل دفع متاحة</h4>
-                                <p className="text-xs font-bold text-gray-400 mt-2 uppercase tracking-widest leading-relaxed">يرجى التواصل مع الإدارة مباشرة لإتمام طلبك</p>
+                        /* Empty state */
+                        <div className="flex flex-col items-center justify-center text-center" style={{ padding: "48px 0" }}>
+                            <div
+                                className="flex items-center justify-center mb-5"
+                                style={{
+                                    width: "80px",
+                                    height: "80px",
+                                    borderRadius: "var(--radius-lg)",
+                                    background: "rgba(227,169,0,0.10)",
+                                    border: "1.5px solid rgba(227,169,0,0.22)",
+                                    fontSize: "36px",
+                                }}
+                            >
+                                📵
                             </div>
+                            <h4
+                                className="font-black"
+                                style={{ fontSize: "18px", color: "var(--text-primary)" }}
+                            >
+                                لا توجد وسائل دفع متاحة
+                            </h4>
+                            <p
+                                className="font-semibold mt-2 uppercase tracking-wider"
+                                style={{ fontSize: "11px", color: "var(--text-muted)", maxWidth: "240px" }}
+                            >
+                                يرجى التواصل مع الإدارة مباشرة لإتمام طلبك
+                            </p>
                         </div>
                     )}
                 </div>
 
-                {/* Bottom Tip */}
-                <div className="p-8 bg-gray-50/50 border-t border-gray-50 shrink-0">
-                    <p className="text-[10px] font-bold text-gray-400 text-center uppercase tracking-widest leading-relaxed opacity-70">
+                {/* Footer tip */}
+                <div
+                    className="shrink-0"
+                    style={{
+                        padding: "16px 28px",
+                        borderTop: "1px solid rgba(227,169,0,0.20)",
+                        background: "rgba(255,248,207,0.50)",
+                    }}
+                >
+                    <p
+                        className="text-center font-semibold uppercase tracking-wider"
+                        style={{ fontSize: "9px", color: "var(--text-muted)", lineHeight: 1.6 }}
+                    >
                         تأكد من إرسال إشعار التحويل بعد إتمام العملية لضمان معالجة طلبك بأسرع وقت
                     </p>
                 </div>

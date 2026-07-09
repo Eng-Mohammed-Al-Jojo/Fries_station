@@ -3,8 +3,9 @@ import { db, auth } from "../firebase";
 import { ref, onValue, remove, update, get, set, push } from "firebase/database";
 import {
   FiDownload, FiSettings, FiUpload, FiLogOut, FiPackage,
-  FiLayout, FiDatabase, FiLock, FiMail, FiUser, FiDollarSign
+  FiDatabase, FiLock, FiMail, FiUser, FiDollarSign
 } from "react-icons/fi";
+
 import { motion, AnimatePresence } from "framer-motion";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -428,16 +429,16 @@ export default function Admin() {
 
   // ================= ADMIN PANEL UI =================
   return (
-    <div className="min-h-screen bg-gray-50 flex justify-center py-6 sm:py-10 px-4 md:px-10">
+    <div className="min-h-screen flex justify-center py-6 sm:py-10 px-4 md:px-10" style={{ background: "var(--bg-main)" }}>
       <div className="w-full max-w-6xl space-y-8 sm:space-y-10">
         {/* Modern Header */}
-        <header className="bg-white border border-gray-100 p-8 rounded-[2.5rem] flex flex-col md:flex-row justify-between items-center gap-8 shadow-premium">
+        <header className="admin-card p-8 rounded-[2.5rem] flex flex-col md:flex-row justify-between items-center gap-8" style={{ borderInlineStart: "4px solid var(--brand-gold)" }}>
           <div className="flex items-center gap-6">
-            <div className="w-16 h-16 bg-white p-2 rounded-2xl shadow-soft border border-gray-50 flex items-center justify-center">
+            <div className="w-16 h-16 bg-white p-2 rounded-2xl border flex items-center justify-center" style={{ border: "1.5px solid rgba(227,169,0,0.30)", boxShadow: "0 4px 14px rgba(227,169,0,0.16)" }}>
               <img src="/logo.png" alt="Logo" className="w-full h-full object-contain" onError={(e) => e.currentTarget.src = '/hamada.png'} />
             </div>
             <div>
-              <h1 className="text-2xl font-black text-gray-900">{t('admin.menu_management')}</h1>
+              <h1 className="text-2xl font-black" style={{ color: "var(--text-primary)" }}>{t('admin.menu_management')}</h1>
               <div className="flex flex-wrap items-center gap-4 mt-2">
                 <div className="flex items-center gap-2">
                   <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_12px_rgba(16,185,129,0.4)]" />
@@ -455,7 +456,7 @@ export default function Admin() {
 
           <div className="flex items-center gap-4 flex-wrap justify-center w-full md:w-auto">
             {/* Action Group */}
-            <div className="flex items-center gap-1.5 bg-gray-50 p-2 rounded-2xl border border-gray-100 shadow-inner">
+            <div className="flex items-center gap-1.5 p-2 rounded-2xl" style={{ background: "var(--display-yellow-pale)", border: "1.5px solid rgba(227,169,0,0.24)" }}>
               <button onClick={() => setShowOrderSettings(true)} className="w-11 h-11 flex items-center justify-center rounded-xl hover:bg-white hover:text-primary hover:shadow-sm text-gray-400 transition-all" title={t('admin.settings')}>
                 <FiSettings size={20} />
               </button>
@@ -496,8 +497,8 @@ export default function Admin() {
           {/* Section 2: Categories */}
           <section className="space-y-6">
             <div className="flex items-center gap-3 px-4">
-              <FiLayout className="text-primary text-xl" />
-              <h2 className="text-2xl font-black text-(--text-main)">{t('admin.categories')}</h2>
+              <div className="admin-section-bar" aria-hidden="true" />
+              <h2 className="text-2xl font-black" style={{ color: "var(--text-primary)" }}>{t('admin.categories')}</h2>
             </div>
             <CategorySection
               categories={categories}
@@ -515,8 +516,8 @@ export default function Admin() {
           {/* Section 3: Items */}
           <section className="space-y-6">
             <div className="flex items-center gap-3 px-4">
-              <FiPackage className="text-secondary text-xl" />
-              <h2 className="text-2xl font-black text-(--text-main)">{t('admin.products')}</h2>
+              <div className="admin-section-bar" aria-hidden="true" />
+              <h2 className="text-2xl font-black" style={{ color: "var(--text-primary)" }}>{t('admin.products')}</h2>
             </div>
             <ItemSection
               categories={categories}
@@ -590,7 +591,8 @@ export default function Admin() {
               initial={{ opacity: 0, y: 30, x: '-50%' }}
               animate={{ opacity: 1, y: 0, x: '-50%' }}
               exit={{ opacity: 0, y: 30, x: '-50%' }}
-              className={`fixed bottom-10 left-1/2 z-100 px-8 py-4 rounded-2xl shadow-2xl text-white font-black text-sm border-t-4 border-white/20 ${toast.type === 'success' ? 'bg-primary' : 'bg-red-500'}`}
+              className={`fixed bottom-10 left-1/2 z-[100] px-8 py-4 font-black text-sm text-white ${toast.type === 'success' ? 'bg-primary' : 'bg-red-500'}`}
+              style={{ borderRadius: "var(--radius-full)", boxShadow: "0 16px 40px rgba(0,0,0,0.28)", border: "1.5px solid rgba(255,255,255,0.20)" }}
             >
               {toast.message}
             </motion.div>
