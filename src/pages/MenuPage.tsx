@@ -36,6 +36,22 @@ export default function MenuPage() {
     if (!loading) setIsDataReady(true);
   }, []);
 
+  const handleFeaturedCheck = useCallback((has: boolean) => {
+    setHasFeatured(has);
+  }, []);
+
+  const handleFeaturedItemsChange = useCallback((items: Item[]) => {
+    setFeaturedItems(items);
+  }, []);
+
+  const handleItemClick = useCallback((item: Item) => {
+    setSelectedItem(item);
+  }, []);
+
+  const handleDetailsClick = useCallback((item: Item) => {
+    setSelectedDetailsItem(item);
+  }, []);
+
   return (
     <div
       className="min-h-screen flex flex-col menu-wrapper overflow-x-hidden"
@@ -113,11 +129,11 @@ export default function MenuPage() {
 
           {/* Radial gold glow */}
           <motion.div
-            animate={{ opacity: [0.25, 0.45, 0.25], scale: [1, 1.08, 1] }}
-            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[420px] h-[420px] rounded-full pointer-events-none"
+            animate={{ opacity: [0.20, 0.38, 0.20], scale: [1, 1.06, 1] }}
+            transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[420px] h-[420px] rounded-full pointer-events-none transform-gpu"
             style={{
-              background: "radial-gradient(circle, rgba(245,197,24,0.30) 0%, transparent 68%)",
+              background: "radial-gradient(circle, rgba(255,210,46,0.28) 0%, transparent 68%)",
             }}
           />
 
@@ -137,9 +153,9 @@ export default function MenuPage() {
               {/* Outer halo */}
               <motion.div
                 animate={{ rotate: 360 }}
-                transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-0 rounded-full pointer-events-none"
-                style={{ border: "1.5px solid rgba(245,197,24,0.22)", borderTopColor: "rgba(245,197,24,0.7)" }}
+                transition={{ duration: 24, repeat: Infinity, ease: "linear" }}
+                className="absolute inset-0 rounded-full pointer-events-none transform-gpu will-change-transform"
+                style={{ border: "1.5px solid rgba(255,210,46,0.22)", borderTopColor: "rgba(255,210,46,0.7)" }}
               />
               {/* Inner subtle ring */}
               <div
@@ -230,16 +246,18 @@ export default function MenuPage() {
         {/* ═══════════════════════════
             MENU CONTENT — Cream area
             ═══════════════════════════ */}
+
         <div
           className="flex-1 w-full max-w-6xl mx-auto px-0 md:px-6 pb-28"
           style={{ marginTop: "-1px" }} /* flush against wave */
         >
+
           <Menu
             onLoadingChange={handleLoadingChange}
-            onFeaturedCheck={setHasFeatured}
-            onFeaturedItemsChange={setFeaturedItems}
-            onItemClick={setSelectedItem}
-            onDetailsClick={setSelectedDetailsItem}
+            onFeaturedCheck={handleFeaturedCheck}
+            onFeaturedItemsChange={handleFeaturedItemsChange}
+            onItemClick={handleItemClick}
+            onDetailsClick={handleDetailsClick}
           />
         </div>
 

@@ -70,18 +70,18 @@ function Pill({ label, isActive, onClick, isAll, refProp }: PillProps) {
       ref={refProp || null}
       onClick={onClick}
       aria-pressed={isActive}
-      className="relative flex items-center gap-1 mt-1 whitespace-nowrap font-semibold text-sm overflow-hidden"
+      className="relative flex items-center gap-1 mt-1 whitespace-nowrap font-bold text-sm overflow-hidden"
       style={{
         height: "42px",
-        paddingInline: "20px",
+        paddingInline: "22px",
         borderRadius: "var(--radius-full)",
         border: isActive
-          ? "2px solid var(--brand-gold-deep)"
+          ? "1.5px solid var(--brand-gold)"
           : "1.5px solid var(--display-yellow-border)",
-        background: isActive ? "var(--brand-gold)" : "var(--display-yellow-pale)",
+        background: isActive ? "var(--brand-gold)" : "var(--bg-card)",
         color: isActive ? "var(--brand-dark)" : "var(--text-secondary)",
         transition: "background var(--transition), color var(--transition), border-color var(--transition), box-shadow var(--transition)",
-        boxShadow: isActive ? "0 8px 22px rgba(227,169,0,0.32)" : "0 5px 16px rgba(227,169,0,0.10)",
+        boxShadow: isActive ? "0 8px 20px rgba(255,210,46,0.25)" : "0 4px 12px rgba(212,10,37,0.02)",
         outline: "none",
       }}
       onMouseEnter={(e) => {

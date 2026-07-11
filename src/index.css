@@ -66,36 +66,36 @@
    ========================================================== */
 
 @theme {
-  /* === Brand Red === */
-  --color-primary-50: #fff0f2;
-  --color-primary-100: #ffdce1;
-  --color-primary-200: #ffb3bb;
-  --color-primary-300: #ff8090;
-  --color-primary-400: #f84d62;
-  --color-primary-500: #C8102E;
-  --color-primary-600: #a90e27;
-  --color-primary-700: #8a0b1f;
-  --color-primary-800: #6b0818;
-  --color-primary-900: #4c0511;
+  /* === Brand Burgundy (Elevated Red) === */
+  --color-primary-50: #d40a25;
+  --color-primary-100: #fbe5e7;
+  --color-primary-200: #f7bec3;
+  --color-primary-300: #ee8c97;
+  --color-primary-400: #e05364;
+  --color-primary-500: #7D0E1C;
+  --color-primary-600: #680b16;
+  --color-primary-700: #550811;
+  --color-primary-800: #42050b;
+  --color-primary-900: #300206;
   --color-primary: var(--color-primary-500);
 
-  /* === Brand Dark (Near-Black) === */
-  --color-secondary-50: #f5f0f0;
-  --color-secondary-100: #e0d5d5;
-  --color-secondary-200: #c0a8a8;
-  --color-secondary-300: #9a7070;
-  --color-secondary-400: #6b3a3a;
-  --color-secondary-500: #1A0A0A;
-  --color-secondary-600: #140808;
-  --color-secondary-700: #0e0505;
-  --color-secondary-800: #080303;
+  /* === Brand Charcoal (Dark Accent) === */
+  --color-secondary-50: #f6f6f6;
+  --color-secondary-100: #e2e2e2;
+  --color-secondary-200: #c1c1c1;
+  --color-secondary-300: #939393;
+  --color-secondary-400: #5f5f5f;
+  --color-secondary-500: #1C1B1A;
+  --color-secondary-600: #161514;
+  --color-secondary-700: #100f0e;
+  --color-secondary-800: #0a0909;
   --color-secondary-900: #000000;
   --color-secondary: var(--color-secondary-500);
 
   /* === Shadows === */
-  --shadow-card: 0 8px 24px rgba(200, 16, 46, 0.08);
-  --shadow-floating: 0 12px 32px rgba(200, 16, 46, 0.12);
-  --shadow-button: 0 6px 18px rgba(200, 16, 46, 0.18);
+  --shadow-card: 0 10px 30px rgba(125, 14, 28, 0.04);
+  --shadow-floating: 0 16px 40px rgba(125, 14, 28, 0.08);
+  --shadow-button: 0 6px 20px rgba(125, 14, 28, 0.20);
 
   /* Legacy aliases (kept for any remaining usages) */
   --shadow-premium: var(--shadow-floating);
@@ -103,39 +103,47 @@
 }
 
 /* ==========================================================
-   ROOT DESIGN TOKENS — Fries Station
+   ROOT DESIGN TOKENS — Fries Station Redesign
    ========================================================== */
 :root {
   /* Brand */
-  --brand-red: #C8102E;
+  --brand-red: #d40a25;
+  /* Premium Burgundy */
   --brand-gold: #FFD22E;
-  --brand-gold-deep: #E3A900;
-  --brand-dark: #1A0A0A;
-  --brand-cream: #FFF8E7;
+  /* Premium Metallic Gold */
+  --brand-gold-deep: #FFD22E;
+  --brand-dark: #1C1B1A;
+  /* Premium Charcoal */
+  --brand-cream: #FCFAF2;
+  /* Soft Ivory */
 
   /* Backgrounds */
-  --bg-main: #FFF6D8;
-  --bg-surface: #FFECA3;
-  --bg-card: #FFFDF2;
-  --bg-hero: #C8102E;
-  --display-yellow: #FFD84A;
-  --display-yellow-soft: #FFEFA6;
-  --display-yellow-pale: #FFF8CF;
-  --display-yellow-row: linear-gradient(135deg, #FFF8CA 0%, #FFE57A 100%);
-  --display-yellow-card: linear-gradient(135deg, #FFFDF0 0%, #FFF1A8 100%);
-  --display-yellow-border: rgba(227, 169, 0, 0.42);
+  --bg-main: #FAF6ED;
+  /* Warm Cream background */
+  --bg-surface: #F3ECE0;
+  --bg-card: #FFFFFF;
+  /* Soft Ivory card surface */
+  --bg-hero: #4E0F17;
+  /* Deep Burgundy Hero */
+  --display-yellow: #FAF6ED;
+  /* Replaced saturated yellow */
+  --display-yellow-soft: #F9F4EA;
+  --display-yellow-pale: #FCFAF5;
+  --display-yellow-row: linear-gradient(135deg, #FFFFFF 0%, #FAF6ED 100%);
+  --display-yellow-card: linear-gradient(135deg, #FFFFFF 0%, #FAF6ED 100%);
+  --display-yellow-border: rgba(212, 175, 55, 0.16);
 
   /* Text */
-  --text-primary: #1A0A0A;
-  --text-secondary: #4A2020;
-  --text-muted: #9A7070;
+  --text-primary: #1C1B1A;
+  --text-secondary: #5A4D4A;
+  --text-muted: #8E7E7A;
   --text-on-red: #FFFFFF;
-  --text-on-gold: #1A0A0A;
+  --text-on-gold: #1C1B1A;
 
   /* Borders */
-  --border-light: rgba(200, 16, 46, 0.08);
-  --border-base: rgba(200, 16, 46, 0.16);
-  --border-strong: rgba(200, 16, 46, 0.30);
+  --border-light: rgba(212, 175, 55, 0.08);
+  --border-base: rgba(212, 175, 55, 0.15);
+  --border-strong: rgba(212, 175, 55, 0.30);
 
   /* Border radius */
   --radius-sm: 12px;
@@ -151,12 +159,12 @@
   --radius-4xl: var(--radius-hero);
 
   /* Shadows */
-  --shadow-card: 0 10px 26px rgba(227, 169, 0, 0.16);
-  --shadow-floating: 0 16px 38px rgba(227, 169, 0, 0.22);
-  --shadow-button: 0 6px 18px rgba(200, 16, 46, 0.18);
+  --shadow-card: 0 10px 30px rgba(125, 14, 28, 0.04);
+  --shadow-floating: 0 16px 40px rgba(125, 14, 28, 0.08);
+  --shadow-button: 0 6px 20px rgba(125, 14, 28, 0.20);
 
   /* Transitions — one standard for every component */
-  --transition: 250ms ease;
+  --transition: 300ms cubic-bezier(0.16, 1, 0.3, 1);
 
   /* Legacy: menu-* variables pointing to brand tokens */
   --menu-bg: var(--bg-main);
@@ -193,29 +201,18 @@ body {
 
 .category-display-panel {
   position: relative;
-  padding: clamp(18px, 4vw, 30px);
-  border-radius: var(--radius-lg);
-  background:
-    radial-gradient(circle at 15% 0%, rgba(255, 255, 255, 0.55), transparent 32%),
-    linear-gradient(145deg, var(--display-yellow-soft) 0%, var(--display-yellow) 100%);
-  border: 1.5px solid var(--display-yellow-border);
-  box-shadow: 0 18px 45px rgba(227, 169, 0, 0.18);
-  overflow: hidden;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  overflow: visible;
+  padding: 0;
 }
 
 .category-display-panel::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(90deg, rgba(255,255,255,0.18) 1px, transparent 1px),
-    linear-gradient(0deg, rgba(255,255,255,0.14) 1px, transparent 1px);
-  background-size: 28px 28px;
-  opacity: 0.35;
-  pointer-events: none;
+  display: none;
 }
 
-.category-display-panel > * {
+.category-display-panel>* {
   position: relative;
   z-index: 1;
 }
@@ -478,473 +475,254 @@ body {
 }
 
 /* ==========================================================
-   ITEM ROW — Premium Unified Layout (Clean CSS System)
-   No inline styles. RTL-safe via logical properties.
+   ITEM ROW — Premium Alternating & Overlapping Layout (RTL & Responsive)
    ========================================================== */
 
-/* ── Outer shell ── */
 .item-row-outer {
   display: flex;
-  flex-direction: row;
-  align-items: center;          /* Centered vertical alignment */
-  gap: 8px;                     /* Gap between image and content */
-  position: relative;
-  overflow: visible;             /* KEY: badge never clipped */
+  align-items: center;
   width: 100%;
-  cursor: pointer;
-  border-radius: var(--radius-md);
-  animation: itemRowIn 0.30s ease forwards;
+  position: relative;
+  margin-bottom: 24px;
+}
+
+/* ── Overlapping Image Wrapper ── */
+.item-image-wrapper {
+  position: relative;
+  flex-shrink: 0;
+  width: 116px;
+  height: 116px;
+  z-index: 10;
+  transition: transform var(--transition);
+}
+
+.item-image-wrapper-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 2px solid rgba(212, 175, 55, 0.22);
+  box-shadow:
+    0 10px 24px rgba(125, 14, 28, 0.12),
+    0 4px 8px rgba(0, 0, 0, 0.04);
+  transition: box-shadow var(--transition), border-color var(--transition);
+}
+
+.item-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--transition);
+}
+
+/* Hover scales image and enhances glow/shadow */
+.item-row-outer:not(.unavailable):hover .item-image-wrapper-inner {
+  border-color: var(--brand-gold);
+  box-shadow:
+    0 14px 32px rgba(125, 14, 28, 0.20),
+    0 6px 14px rgba(0, 0, 0, 0.08);
+}
+
+.item-row-outer:not(.unavailable):hover .item-image-wrapper img {
+  transform: scale(1.08);
+}
+
+/* ── Content Card ── */
+.item-card {
+  flex-grow: 1;
+  min-height: 98px;
+  border-radius: 22px;
+  background: var(--bg-card);
+  border: 1px solid rgba(212, 175, 55, 0.14);
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   transition:
-    transform var(--transition),
-    box-shadow var(--transition);
+    box-shadow var(--transition),
+    border-color var(--transition),
+    transform var(--transition);
+  overflow: hidden;
+  z-index: 1;
 }
 
-.item-row-outer:not(.unavailable):hover {
+.item-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg,
+      rgba(252, 250, 242, 0.6) 0%,
+      transparent 60%,
+      rgba(125, 14, 28, 0.015) 100%);
+  pointer-events: none;
+}
+
+.item-row-outer:not(.unavailable):hover .item-card {
+  box-shadow: var(--shadow-floating);
+  border-color: rgba(212, 175, 55, 0.28);
   transform: translateY(-2px);
-  box-shadow: 0 14px 34px rgba(227,169,0,0.20);
 }
 
+/* ── Alternating Directions ── */
+
+/* Even items: image is at start (RTL: right, LTR: left) */
+.item-row-outer.image-start {
+  flex-direction: row;
+}
+
+.item-row-outer.image-start .item-image-wrapper {
+  margin-inline-end: -28px;
+}
+
+.item-row-outer.image-start .item-card {
+  padding-block: 16px;
+  padding-inline-start: 46px;
+  /* Space for overlapped image */
+  padding-inline-end: 20px;
+}
+
+/* Odd items: image is at end (RTL: left, LTR: right) */
+.item-row-outer.image-end {
+  flex-direction: row-reverse;
+}
+
+.item-row-outer.image-end .item-image-wrapper {
+  margin-inline-start: -28px;
+}
+
+.item-row-outer.image-end .item-card {
+  padding-block: 16px;
+  padding-inline-end: 46px;
+  /* Space for overlapped image */
+  padding-inline-start: 20px;
+}
+
+/* ── Card Edge Accent ── */
+.item-card-accent {
+  position: absolute;
+  top: 16px;
+  bottom: 16px;
+  width: 3.5px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(to bottom,
+      var(--brand-gold),
+      var(--brand-red));
+  transition: opacity var(--transition);
+}
+
+.item-row-outer.image-start .item-card-accent {
+  inset-inline-start: 0;
+  inset-inline-end: auto;
+}
+
+.item-row-outer.image-end .item-card-accent {
+  inset-inline-end: 0;
+  inset-inline-start: auto;
+}
+
+/* ── Featured Stickers ── */
+.featured-sticker {
+  position: absolute;
+  top: -8px;
+  inset-inline-start: -8px;
+  background: linear-gradient(135deg, var(--brand-gold) 0%, var(--brand-gold-deep) 100%);
+  color: var(--brand-dark);
+  width: 26px;
+  height: 26px;
+  border-radius: var(--radius-full);
+  border: 2px solid var(--bg-card);
+  box-shadow: 0 4px 10px rgba(125, 14, 28, 0.16);
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--transition);
+}
+
+.item-row-outer:not(.unavailable):hover .featured-sticker {
+  transform: scale(1.12) rotate(12deg);
+}
+
+/* ── Unavailable State ── */
 .item-row-outer.unavailable {
   opacity: 0.55;
   cursor: not-allowed;
 }
 
-/* ── Image wrapper ─────────────────────────────────────────
-   Fixed dimensions to keep consistency and prevent stretching/distortion.
-   ─────────────────────────────────────────────────────── */
-.item-image-wrapper {
-  flex-shrink: 0;
-  width: clamp(84px, 22vw, 100px);
-  height: clamp(84px, 22vw, 100px);
-  position: relative;
-  overflow: hidden;
-  border-radius: var(--radius-md);
-  box-shadow:
-    0 4px 14px rgba(200,16,46,0.12),
-    0 10px 28px rgba(200,16,46,0.08);
-  transition: box-shadow var(--transition);
-}
-
-/* Gold ring overlay */
-.item-image-wrapper::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  border: 2px solid rgba(245,197,24,0.42);
-  pointer-events: none;
-  transition: border-color var(--transition);
-  z-index: 2;
-}
-
-.item-row-outer:not(.unavailable):hover .item-image-wrapper {
-  box-shadow:
-    0 6px 20px rgba(200,16,46,0.20),
-    0 16px 38px rgba(200,16,46,0.12);
-}
-
-.item-row-outer:not(.unavailable):hover .item-image-wrapper::after {
-  border-color: rgba(245,197,24,0.88);
-}
-
-/* ── The image itself: constrained absolutely to the wrapper ── */
-.item-image {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-  transition: transform 320ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.item-row-outer:not(.unavailable):hover .item-image {
-  transform: scale(1.07);
-}
-
-/* ── Sold-out overlay ── */
-.item-sold-out-overlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(200,16,46,0.50);
-  z-index: 3;
-}
-
-.item-sold-out-text {
-  color: white;
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  text-shadow: 0 1px 4px rgba(0,0,0,0.3);
-}
-
-/* ── Hide vertical separator since we have a gap ── */
-.item-row-divider {
-  display: none;
-}
-
-/* ── Featured badge ────────────────────────────────────────
-   Positioned on .item-row-outer which has overflow:visible,
-   so it is never clipped regardless of the image container.
-   ─────────────────────────────────────────────────────── */
-.item-featured-badge {
-  position: absolute;
-  top: -9px;
-  inset-inline-end: 12px;
-  display: flex;
-  align-items: center;
-  gap: 3px;
-  padding: 3px 9px 3px 7px;
-  border-radius: var(--radius-full);
-  background: var(--brand-gold);
-  color: var(--brand-dark);
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 0.03em;
-  white-space: nowrap;
-  border: 1.5px solid rgba(255,255,255,0.75);
-  box-shadow:
-    0 4px 14px rgba(227,169,0,0.55),
-    0 1px 4px rgba(0,0,0,0.10);
-  z-index: 20;
-  animation: badgePop 0.40s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
-
-@keyframes badgePop {
-  from {
-    transform: scale(0.55) translateY(-4px);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1) translateY(0);
-    opacity: 1;
-  }
-}
-
-/* ── Content card ── */
-.item-card {
-  flex: 1;
-  min-width: 0;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  padding-block: 14px;
-  padding-inline-start: 10px;
-  padding-inline-end: 14px;
-  position: relative;
-  background: var(--display-yellow-card);
-  border: 1.5px solid rgba(227,169,0,0.38);
-  border-radius: var(--radius-md);
-  min-height: clamp(84px, 22vw, 100px);
-  box-shadow: var(--shadow-card);
-  overflow: hidden;
-  transition:
-    box-shadow var(--transition),
-    border-color var(--transition);
-}
-
-/* Glass sheen */
-.item-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(255,255,255,0.24) 0%,
-    transparent 52%,
-    rgba(200,16,46,0.03) 100%
-  );
-  pointer-events: none;
-  border-radius: inherit;
-}
-
-.item-row-outer:not(.unavailable):hover .item-card {
-  box-shadow: var(--shadow-floating);
-  border-color: rgba(200,16,46,0.26);
-}
-
 .item-row-outer.unavailable .item-card {
-  background: rgba(255,248,207,0.55);
-  border-color: rgba(227,169,0,0.16);
+  background: var(--display-yellow-soft);
+  border-color: var(--border-light);
   box-shadow: none;
 }
 
-/* ── Info column (name + description) ── */
-.item-info-col {
-  flex: 1;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+.item-row-outer.unavailable .item-image-wrapper-inner {
+  filter: grayscale(0.5);
+  border-color: var(--border-light);
 }
 
-.item-name {
-  font-size: clamp(14px, 3.8vw, 17px);
-  font-weight: 700;
-  line-height: 1.3;
-  color: var(--text-primary);
-  letter-spacing: -0.01em;
-  margin: 0;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
-.item-description {
-  font-size: clamp(10px, 2.6vw, 12px);
-  color: var(--text-muted);
-  font-weight: 500;
-  line-height: 1.5;
-  margin: 0;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-/* ── Action column (price + button) ── */
-.item-action-col {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex-shrink: 0;
-  gap: 8px;
-}
-
-/* ── Price display ── */
-.item-price {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  justify-content: center;
-  gap: 2px;
-  color: var(--brand-red);
-}
-
-.item-price.price-unavailable {
-  color: var(--text-muted);
-  text-decoration: line-through;
-  text-decoration-color: rgba(154,112,112,0.5);
-}
-
-.item-price-block {
-  display: flex;
-  align-items: baseline;
-  gap: 1px;
-  font-weight: 900;
-  line-height: 1;
-}
-
-.item-price-block.price-single {
-  font-size: 17px;
-}
-
-.item-price-block.price-multi {
-  font-size: 15px;
-}
-
-.item-currency {
-  font-size: 11px;
-  font-weight: 700;
-  opacity: 0.7;
-}
-
-/* ── Add-to-cart button — all states via pure CSS ── */
-.item-add-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  width: 36px;
-  height: 36px;
-  border-radius: var(--radius-full);
-  background: var(--brand-red);
-  color: white;
-  border: none;
-  cursor: pointer;
-  box-shadow: var(--shadow-button);
-  transition:
-    background var(--transition),
-    transform var(--transition),
-    color var(--transition),
-    box-shadow var(--transition);
-}
-
-.item-add-btn:hover {
-  background: var(--brand-gold);
-  color: var(--brand-dark);
-  transform: scale(1.10);
-  box-shadow: 0 8px 24px rgba(245,197,24,0.42);
-}
-
-.item-add-btn:active {
-  transform: scale(0.92);
-  box-shadow: 0 3px 10px rgba(200,16,46,0.20);
-}
-
-.item-add-btn:focus-visible {
-  outline: 2px solid var(--brand-gold);
-  outline-offset: 2px;
-}
-
-/* ── Unavailable pill badge ── */
-.item-unavailable-badge {
-  font-size: 9px;
-  font-weight: 700;
-  padding: 3px 9px;
-  border-radius: var(--radius-full);
-  background: rgba(200,16,46,0.07);
-  color: var(--brand-red);
-  border: 1px solid rgba(200,16,46,0.18);
-  letter-spacing: 0.05em;
-  white-space: nowrap;
-}
-
-/* ── Responsive: Tablet ≤ 768px ── */
+/* ── Responsive adjustments — Tablet (<= 768px) ── */
 @media (max-width: 768px) {
   .item-image-wrapper {
-    width: clamp(78px, 22vw, 94px);
+    width: 104px;
+    height: 104px;
   }
 
-  .item-card {
-    padding-block: 12px;
-    padding-inline-start: 8px;
-    padding-inline-end: 12px;
+  .item-row-outer.image-start .item-image-wrapper {
+    margin-inline-end: -22px;
+  }
+
+  .item-row-outer.image-start .item-card {
+    padding-inline-start: 36px;
+    padding-inline-end: 16px;
+  }
+
+  .item-row-outer.image-end .item-image-wrapper {
+    margin-inline-start: -22px;
+  }
+
+  .item-row-outer.image-end .item-card {
+    padding-inline-end: 36px;
+    padding-inline-start: 16px;
   }
 }
 
-/* ── Responsive: Mobile ≤ 480px ── */
+/* ── Responsive adjustments — Mobile (<= 480px) ── */
 @media (max-width: 480px) {
+  .item-row-outer {
+    margin-bottom: 20px;
+  }
+
   .item-image-wrapper {
-    width: clamp(70px, 20vw, 84px);
+    width: 86px;
+    height: 86px;
   }
 
-  .item-card {
-    padding-block: 10px;
-    gap: 8px;
+  .item-row-outer.image-start .item-image-wrapper {
+    margin-inline-end: -18px;
   }
 
-  .item-featured-badge {
-    font-size: 9px;
-    padding: 2px 7px 2px 5px;
-    top: -7px;
-    inset-inline-end: 8px;
+  .item-row-outer.image-start .item-card {
+    padding-inline-start: 28px;
+    padding-inline-end: 12px;
+    padding-block: 12px;
+  }
+
+  .item-row-outer.image-end .item-image-wrapper {
+    margin-inline-start: -18px;
+  }
+
+  .item-row-outer.image-end .item-card {
+    padding-inline-end: 28px;
+    padding-inline-start: 12px;
+    padding-block: 12px;
+  }
+
+  .featured-sticker {
+    top: -6px;
+    inset-inline-start: -6px;
+    width: 22px;
+    height: 22px;
   }
 }
-
-/* ==========================================================
-   ADMIN DASHBOARD — Brand-Consistent Gold Theme
-   ========================================================== */
-
-.admin-section-bar {
-  width: 5px;
-  height: 32px;
-  border-radius: var(--radius-full);
-  background: linear-gradient(to bottom, var(--brand-gold), var(--brand-gold-deep));
-  box-shadow: 0 4px 12px rgba(227,169,0,0.40);
-  flex-shrink: 0;
-}
-
-.admin-card {
-  background: white;
-  border: 1.5px solid rgba(227,169,0,0.24);
-  border-radius: var(--radius-lg);
-  box-shadow: 0 8px 24px rgba(227,169,0,0.10);
-  transition:
-    box-shadow var(--transition),
-    border-color var(--transition);
-}
-
-.admin-card:hover {
-  border-color: rgba(227,169,0,0.45);
-  box-shadow: 0 12px 32px rgba(227,169,0,0.18);
-}
-
-.admin-input {
-  background: #FFFDF2;
-  border: 1.5px solid rgba(227,169,0,0.28);
-  border-radius: var(--radius-sm);
-  transition:
-    border-color var(--transition),
-    box-shadow var(--transition);
-  outline: none;
-  color: var(--text-primary);
-  font-family: 'IBM Plex Sans Arabic', sans-serif;
-}
-
-.admin-input:focus {
-  border-color: var(--brand-gold-deep);
-  box-shadow: 0 0 0 3px rgba(227,169,0,0.20);
-}
-
-.admin-btn-primary {
-  background: var(--brand-red);
-  color: white;
-  border: none;
-  border-radius: var(--radius-sm);
-  font-weight: 700;
-  cursor: pointer;
-  transition:
-    background var(--transition),
-    transform var(--transition),
-    box-shadow var(--transition);
-  box-shadow: var(--shadow-button);
-}
-
-.admin-btn-primary:hover {
-  background: var(--color-primary-600);
-  transform: translateY(-1px);
-  box-shadow: 0 10px 28px rgba(200,16,46,0.28);
-}
-
-.admin-btn-primary:active {
-  transform: translateY(0);
-}
-
-.admin-btn-gold {
-  background: var(--brand-gold);
-  color: var(--brand-dark);
-  border: none;
-  border-radius: var(--radius-sm);
-  font-weight: 700;
-  cursor: pointer;
-  transition:
-    background var(--transition),
-    transform var(--transition),
-    box-shadow var(--transition);
-  box-shadow: 0 4px 14px rgba(227,169,0,0.35);
-}
-
-.admin-btn-gold:hover {
-  background: var(--brand-gold-deep);
-  color: white;
-  transform: translateY(-1px);
-  box-shadow: 0 8px 22px rgba(227,169,0,0.50);
-}
-
-.admin-badge-gold {
-  padding: 3px 10px;
-  border-radius: var(--radius-full);
-  background: rgba(227,169,0,0.12);
-  color: var(--brand-gold-deep);
-  border: 1px solid rgba(227,169,0,0.30);
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-
-.admin-gold-separator {
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(227,169,0,0.40), transparent);
-  margin-block: 8px;
-}
-
-

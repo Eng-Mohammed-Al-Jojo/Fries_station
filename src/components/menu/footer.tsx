@@ -76,26 +76,24 @@ export default function Footer() {
 
   return (
     <footer
-      className="relative w-full overflow-hidden"
-      style={{
-        background: "var(--brand-red)",
-        paddingTop: "0",
-        paddingBottom: "44px",
-        marginTop: "40px",
-      }}
+      className="relative w-full overflow-hidden bg-[var(--brand-red)] pt-0 pb-[44px] mt-[40px]"
       aria-label="Footer"
     >
+      {/* Watermark pattern overlay */}
+      <div
+        className="absolute inset-0 hero-watermark pointer-events-none"
+        aria-hidden="true"
+      />
       {/* ── SVG Wave divider (Cream to Red transition) ── */}
       <div
-        className="relative w-full pointer-events-none"
-        style={{ height: "60px", marginBottom: "40px", transform: "rotate(180deg)" }}
+        className="relative w-full pointer-events-none h-[60px] mb-[40px] rotate-180"
         aria-hidden="true"
       >
         <svg
           viewBox="0 0 1440 80"
           xmlns="http://www.w3.org/2000/svg"
           preserveAspectRatio="none"
-          style={{ display: "block", width: "100%", height: "100%" }}
+          className="block w-full h-full"
         >
           <path
             d="M0,30 C360,75 1080,0 1440,40 L1440,80 L0,80 Z"
@@ -106,50 +104,25 @@ export default function Footer() {
 
       {/* Watermark pattern overlay */}
       <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          backgroundImage: "url('/pattern.png')", // Assume there's a pattern or we can just use CSS
-          opacity: 0.05,
-          backgroundSize: "200px",
-          backgroundRepeat: "repeat",
-        }}
+        className="absolute inset-0 pointer-events-none opacity-5 bg-[url('/pattern.png')] bg-[length:200px] bg-repeat"
         aria-hidden="true"
       />
 
       <div
-        className="relative z-10"
-        style={{
-          maxWidth: "720px",
-          margin: "0 auto",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          gap: "28px",
-        }}
+        className="relative z-10 max-w-[720px] mx-auto flex flex-col items-center gap-7"
       >
         {/* Logo */}
         <img
           src="/logo.png"
           alt="Fries Station"
-          style={{
-            width: "130px",
-            height: "130px",
-            objectFit: "contain",
-            filter: "drop-shadow(0 4px 12px rgba(245,197,24,0.40)) brightness(1.1)",
-          }}
+          className="w-[130px] h-[130px] object-contain drop-shadow-[0_4px_12px_rgba(255,210,46,0.40)] brightness-110"
         />
 
         {/* Contact row */}
-        <div
-          className="flex flex-wrap justify-center"
-          style={{ gap: "20px", fontSize: "13px", fontWeight: 600 }}
-        >
+        <div className="flex flex-wrap justify-center gap-5 text-[13px] font-semibold">
           {footer.address && (
-            <div
-              className="flex items-center gap-2"
-              style={{ color: "rgba(255,255,255,0.80)" }}
-            >
-              <FaMapMarkerAlt style={{ color: "var(--brand-gold)" }} />
+            <div className="flex items-center gap-2 text-white/80">
+              <FaMapMarkerAlt className="text-[var(--brand-gold)]" />
               <span>{footer.address}</span>
             </div>
           )}
@@ -157,20 +130,9 @@ export default function Footer() {
           {footer.phone && (
             <a
               href={`tel:${footer.phone}`}
-              className="flex items-center gap-2"
-              style={{
-                color: "rgba(255,255,255,0.80)",
-                textDecoration: "none",
-                transition: "color var(--transition)",
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.color = "var(--brand-gold)";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.color = "rgba(255,255,255,0.80)";
-              }}
+              className="flex items-center gap-2 text-white/80 no-underline transition-colors duration-300 hover:text-[var(--brand-gold)]"
             >
-              <FaPhoneAlt style={{ color: "var(--brand-gold)" }} />
+              <FaPhoneAlt className="text-[var(--brand-gold)]" />
               <span>{footer.phone}</span>
             </a>
           )}
@@ -178,59 +140,22 @@ export default function Footer() {
           {/* Payment methods button */}
           <button
             onClick={() => setIsPaymentModalOpen(true)}
-            className="flex items-center gap-2"
-            style={{
-              color: "rgba(255,255,255,0.80)",
-              cursor: "pointer",
-              background: "none",
-              border: "none",
-              fontSize: "13px",
-              fontWeight: 600,
-              fontFamily: "IBM Plex Sans Arabic",
-              transition: "color var(--transition)",
-              padding: 0,
-            }}
-            onMouseEnter={(e) => {
-              (e.currentTarget as HTMLButtonElement).style.color = "var(--brand-gold)";
-            }}
-            onMouseLeave={(e) => {
-              (e.currentTarget as HTMLButtonElement).style.color = "rgba(255,255,255,0.80)";
-            }}
+            className="group flex items-center gap-3 bg-black/15 border border-white/10 px-4 py-2.5 rounded-[14px] cursor-pointer shadow-lg backdrop-blur-sm transition-all duration-300 hover:bg-black/25 hover:border-[#FFD22E]/40 hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(0,0,0,0.2)] active:scale-95"
           >
-            <div
-              className="flex items-center justify-center"
-              style={{
-                width: "24px",
-                height: "24px",
-                borderRadius: "var(--radius-sm)",
-                background: "rgba(245,197,24,0.20)",
-                color: "var(--brand-gold)",
-              }}
-            >
-              <FiCreditCard size={13} />
+            <div className="flex items-center justify-center w-8 h-8 rounded-[10px] bg-gradient-to-br from-[#FFD22E]/20 to-transparent border border-[#FFD22E]/30 text-[#FFD22E]">
+              <FiCreditCard size={15} className="transition-transform duration-300 group-hover:scale-110" />
             </div>
-            <span
-              style={{
-                fontSize: "10px",
-                textTransform: "uppercase",
-                letterSpacing: "0.12em",
-                fontWeight: 800,
-              }}
-            >
-              طرق الدفع
-            </span>
+            <div className="flex flex-col items-start justify-center text-start">
+
+              <span className="text-[13px] text-white tracking-[0.05em] font-extrabold leading-none">
+                طرق الدفع
+              </span>
+            </div>
           </button>
         </div>
 
         {/* Divider */}
-        <div
-          style={{
-            width: "100%",
-            height: "1px",
-            background: "rgba(245,197,24,0.20)",
-          }}
-          aria-hidden="true"
-        />
+        <div className="w-full h-px bg-[var(--brand-gold)]/20" aria-hidden="true" />
 
         {/* Social icons */}
         <div className="flex gap-3">
@@ -242,106 +167,34 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={label}
-                className="flex items-center justify-center relative overflow-hidden group"
-                style={{
-                  width: "44px",
-                  height: "44px",
-                  borderRadius: "var(--radius-full)",
-                  background: "rgba(255,255,255,0.08)",
-                  border: "1.5px solid rgba(245,197,24,0.15)",
-                  color: "rgba(255,255,255,0.85)",
-                  transition: "all var(--transition)",
-                  textDecoration: "none",
-                  boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
-                }}
-                onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLAnchorElement).style.background = "var(--brand-gold)";
-                  (e.currentTarget as HTMLAnchorElement).style.color = "var(--brand-dark)";
-                  (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-4px) scale(1.05)";
-                  (e.currentTarget as HTMLAnchorElement).style.borderColor = "var(--brand-gold)";
-                  (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 8px 24px rgba(245,197,24,0.4)";
-                }}
-                onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLAnchorElement).style.background = "rgba(255,255,255,0.08)";
-                  (e.currentTarget as HTMLAnchorElement).style.color = "rgba(255,255,255,0.85)";
-                  (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(0) scale(1)";
-                  (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(245,197,24,0.15)";
-                  (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 4px 12px rgba(0,0,0,0.1)";
-                }}
+                className="flex items-center justify-center relative overflow-hidden group w-11 h-11 rounded-full bg-[#FFD22E] text-[var(--brand-red)] transition-all duration-300 no-underline shadow-[0_4px_12px_rgba(255,210,46,0.2)] hover:-translate-y-1 hover:scale-110 hover:shadow-[0_8px_24px_rgba(255,210,46,0.5)]"
               >
-                <Icon size={18} style={{ position: "relative", zIndex: 2 }} />
+                <Icon size={18} className="relative z-[2]" />
               </a>
             ) : null
           )}
         </div>
 
         {/* Developer signature */}
-        <div
-          className="flex flex-col items-center gap-3"
-          style={{
-            paddingTop: "20px",
-            borderTop: "1px solid rgba(245,197,24,0.15)",
-            width: "100%",
-          }}
-        >
+        <div className="flex flex-col items-center gap-3 pt-5 border-t border-[var(--brand-gold)]/15 w-full">
           <a
             href="https://engmohammedaljojo.vercel.app/"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex flex-col items-center gap-1 group"
-            style={{
-              textDecoration: "none",
-              color: "white",
-              padding: "8px 16px",
-              borderRadius: "var(--radius-lg)",
-              background: "rgba(0,0,0,0.15)",
-              border: "1px solid rgba(255,255,255,0.05)",
-              transition: "all var(--transition)",
-            }}
-            onMouseEnter={(e) => {
-              (e.currentTarget as HTMLAnchorElement).style.background = "rgba(0,0,0,0.25)";
-              (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(245,197,24,0.3)";
-              (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-2px)";
-            }}
-            onMouseLeave={(e) => {
-              (e.currentTarget as HTMLAnchorElement).style.background = "rgba(0,0,0,0.15)";
-              (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(255,255,255,0.05)";
-              (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(0)";
-            }}
+            className="flex flex-col items-center gap-1 group no-underline text-white py-2 px-4 rounded-lg bg-black/15 border border-white/5 transition-all duration-300 hover:bg-black/25 hover:border-[var(--brand-gold)]/30 hover:-translate-y-0.5"
           >
-            <div className="flex items-center gap-2" style={{ color: "rgba(255,255,255,0.6)" }}>
+            <div className="flex items-center gap-2 text-white/60">
               <FaLaptopCode size={14} />
-              <span
-                style={{
-                  fontSize: "9px",
-                  fontWeight: 600,
-                  textTransform: "uppercase",
-                  letterSpacing: "0.2em",
-                }}
-              >
+              <span className="text-[9px] font-semibold uppercase tracking-[0.2em]">
                 {t("footer.developed_by")}
               </span>
             </div>
-            <span
-              style={{
-                fontSize: "14px",
-                fontWeight: 800,
-                color: "var(--brand-gold)",
-                fontFamily: "var(--font-brand, inherit)",
-                letterSpacing: "0.05em",
-              }}
-            >
+            <span className="text-[14px] font-extrabold text-[var(--brand-gold)] font-[var(--font-brand,inherit)] tracking-[0.05em]">
               Eng. Mohammed El joujo
             </span>
           </a>
 
-          <p
-            style={{
-              fontSize: "10px",
-              fontWeight: 600,
-              color: "rgba(255,255,255,0.40)",
-            }}
-          >
+          <p className="text-[10px] font-semibold text-white/40">
             © {new Date().getFullYear()} {t("footer.rights_reserved")}
           </p>
         </div>

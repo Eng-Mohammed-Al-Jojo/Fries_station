@@ -314,7 +314,7 @@ export default function Menu({ onLoadingChange, onFeaturedCheck, onFeaturedItems
                 className="w-full text-sm font-semibold outline-none"
                 style={{
                   background: "var(--display-yellow-pale)",
-                  border: "1.5px solid var(--display-yellow-border)",
+                  border: "1.5px solid #FFD22E",
                   borderRadius: "var(--radius-full)",
                   padding: "13px 52px 13px 20px",
                   color: "var(--text-primary)",
@@ -377,7 +377,6 @@ export default function Menu({ onLoadingChange, onFeaturedCheck, onFeaturedItems
                   variants={containerVariants}
                   initial="hidden"
                   animate="show"
-                  layout
                   className="flex flex-col w-full gap-4"
                 >
                   {filteredItems.map((item) => (
@@ -408,7 +407,7 @@ export default function Menu({ onLoadingChange, onFeaturedCheck, onFeaturedItems
                   animate="animate"
                   exit="exit"
                   transition={{ duration: 0.3 }}
-                  className="space-y-16"
+                  className="space-y-16 transform-gpu"
                 >
                   {(activeCategoryId === "all" || !activeCategoryId) ? (
                     <>
