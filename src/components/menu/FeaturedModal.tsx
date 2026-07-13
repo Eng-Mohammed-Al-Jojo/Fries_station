@@ -192,7 +192,7 @@ export default function FeaturedModal({
                         <div
                           className="absolute inset-0"
                           style={{
-                            background: "linear-gradient(to top, var(--bg-card) 0%, transparent 100%)",
+                            background: "linear-gradient(to top, var(--bg-card) 0%, transparent 50%)",
                           }}
                         />
 
@@ -233,15 +233,15 @@ export default function FeaturedModal({
                       >
                         <div className="flex-1">
                           <h3
-                            className="font-black text-2xl leading-tight mb-2 text-right"
-                            style={{ color: "var(--text-primary)" }}
+                            className="font-semibold text-2xl leading-tight mb-2 text-right"
+                            style={{ color: "var(--text-primary)", fontFamily: "Alexandria", fontWeight: 600 }}
                           >
                             {itemName}
                           </h3>
                           {description && (
                             <p
                               className="text-right line-clamp-3 font-medium"
-                              style={{ color: "var(--text-muted)", fontSize: "14px", lineHeight: 1.6 }}
+                              style={{ color: "var(--text-muted)", fontSize: "14px", lineHeight: 1.6, fontFamily: "Cairo", fontWeight: 500 }}
                             >
                               {description}
                             </p>
@@ -254,11 +254,19 @@ export default function FeaturedModal({
                           style={{ borderTop: "1px solid var(--border-light)" }}
                         >
                           <div
-                            className="flex items-baseline gap-1 font-black"
-                            style={{ color: "var(--brand-red)", fontSize: "22px" }}
+                            className="flex flex-wrap items-baseline gap-1 font-black"
+                            style={{ color: "var(--brand-red)" }}
                           >
-                            <span style={{ fontSize: "14px", opacity: 0.7 }}>₪</span>
-                            {prices[0]}
+                            {prices.map((price, idx) => (
+                              <div
+                                key={idx}
+                                className={`flex items-baseline gap-0.5 font-black ${prices.length > 1 ? "text-[14px]" : "text-[22px]"} leading-none`}
+                                style={{ fontFamily: "Cairo" }}
+                              >
+                                <span className="text-[11px] font-bold opacity-70">₪</span>
+                                {price}
+                              </div>
+                            ))}
                           </div>
 
                           <div className="flex gap-2">

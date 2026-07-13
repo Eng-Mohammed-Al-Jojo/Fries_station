@@ -68,29 +68,33 @@
 
 @theme {
   /* === Brand Red Scale — centered on #D40A25 === */
-  --color-primary-50:  #fce8eb;
+  --color-primary-50: #fce8eb;
   --color-primary-100: #f8c4cb;
   --color-primary-200: #f0848f;
   --color-primary-300: #e84d5c;
   --color-primary-400: #df2237;
-  --color-primary-500: #D40A25;  /* ← true brand red */
-  --color-primary-600: #b5091f;  /* ← hover/dark red */
-  --color-primary-700: #960818;  /* ← pressed red */
+  --color-primary-500: #D40A25;
+  /* ← true brand red */
+  --color-primary-600: #b5091f;
+  /* ← hover/dark red */
+  --color-primary-700: #960818;
+  /* ← pressed red */
   --color-primary-800: #780612;
   --color-primary-900: #5a040d;
   --color-primary: var(--color-primary-500);
 
   /* === Brand Gold Scale — centered on #FFD22E === */
-  --color-gold-50:  #fffbea;
+  --color-gold-50: #fffbea;
   --color-gold-100: #fff3c0;
   --color-gold-200: #ffe780;
-  --color-gold-300: #FFD22E;  /* ← true brand gold */
+  --color-gold-300: #FFD22E;
+  /* ← true brand gold */
   --color-gold-400: #f0c010;
   --color-gold-500: #d4a800;
   --color-gold: var(--color-gold-300);
 
   /* === Brand Dark Scale === */
-  --color-secondary-50:  #f6f6f6;
+  --color-secondary-50: #f6f6f6;
   --color-secondary-100: #e2e2e2;
   --color-secondary-200: #c1c1c1;
   --color-secondary-300: #939393;
@@ -103,14 +107,14 @@
   --color-secondary: var(--color-secondary-500);
 
   /* === Unified Shadow System — single rgba base: rgba(212,10,37,…) === */
-  --shadow-card:     0 10px 30px rgba(212, 10, 37, 0.05);
+  --shadow-card: 0 10px 30px rgba(212, 10, 37, 0.05);
   --shadow-floating: 0 16px 40px rgba(212, 10, 37, 0.09);
-  --shadow-button:   0 6px 20px  rgba(212, 10, 37, 0.22);
-  --shadow-gold:     0 6px 20px  rgba(255, 210, 46, 0.25);
+  --shadow-button: 0 6px 20px rgba(212, 10, 37, 0.22);
+  --shadow-gold: 0 6px 20px rgba(255, 210, 46, 0.25);
 
   /* Legacy aliases */
   --shadow-premium: var(--shadow-floating);
-  --shadow-soft:    var(--shadow-card);
+  --shadow-soft: var(--shadow-card);
 }
 
 /* ==========================================================
@@ -119,94 +123,104 @@
    ========================================================== */
 :root {
   /* ── Brand Colors ── */
-  --brand-red:       #D40A25;   /* Primary action / CTA */
-  --brand-red-dark:  #b5091f;   /* Hover / pressed state */
-  --brand-red-deep:  #960818;   /* Active / focus ring */
-  --brand-gold:      #FFD22E;   /* Accent / featured / price */
-  --brand-gold-deep: #FFD22E;   /* Alias kept for compatibility */
-  --brand-dark:      #1C1B1A;   /* Text on gold / dark surfaces */
+  --brand-red: #D40A25;
+  /* Primary action / CTA */
+  --brand-red-dark: #b5091f;
+  /* Hover / pressed state */
+  --brand-red-deep: #960818;
+  /* Active / focus ring */
+  --brand-gold: #FFD22E;
+  /* Accent / featured / price */
+  --brand-gold-deep: #FFD22E;
+  /* Alias kept for compatibility */
+  --brand-dark: #1C1B1A;
+  /* Text on gold / dark surfaces */
 
   /* ── Semantic Alpha Tokens (unified rgba bases) ── */
   /* Red alphas: all use rgb(212, 10, 37) */
-  --red-a04:   rgba(212, 10, 37, 0.04);
-  --red-a06:   rgba(212, 10, 37, 0.06);
-  --red-a08:   rgba(212, 10, 37, 0.08);
-  --red-a12:   rgba(212, 10, 37, 0.12);
-  --red-a18:   rgba(212, 10, 37, 0.18);
-  --red-a22:   rgba(212, 10, 37, 0.22);
-  --red-a30:   rgba(212, 10, 37, 0.30);
+  --red-a04: rgba(212, 10, 37, 0.04);
+  --red-a06: rgba(212, 10, 37, 0.06);
+  --red-a08: rgba(212, 10, 37, 0.08);
+  --red-a12: rgba(212, 10, 37, 0.12);
+  --red-a18: rgba(212, 10, 37, 0.18);
+  --red-a22: rgba(212, 10, 37, 0.22);
+  --red-a30: rgba(212, 10, 37, 0.30);
 
   /* Gold alphas: all use rgb(255, 210, 46) */
-  --gold-a08:  rgba(255, 210, 46, 0.08);
-  --gold-a12:  rgba(255, 210, 46, 0.12);
-  --gold-a18:  rgba(255, 210, 46, 0.18);
-  --gold-a25:  rgba(255, 210, 46, 0.25);
-  --gold-a30:  rgba(255, 210, 46, 0.30);
-  --gold-a40:  rgba(255, 210, 46, 0.40);
+  --gold-a08: rgba(255, 210, 46, 0.08);
+  --gold-a12: rgba(255, 210, 46, 0.12);
+  --gold-a18: rgba(255, 210, 46, 0.18);
+  --gold-a25: rgba(255, 210, 46, 0.25);
+  --gold-a30: rgba(255, 210, 46, 0.30);
+  --gold-a40: rgba(255, 210, 46, 0.40);
 
   /* Dark alphas: use rgb(28, 27, 26) */
-  --dark-a40:  rgba(28, 14, 14, 0.40);
-  --dark-a65:  rgba(28, 14, 14, 0.65);
-  --dark-a72:  rgba(28, 14, 14, 0.72);
-  --dark-a85:  rgba(28, 14, 14, 0.85);
+  --dark-a40: rgba(28, 14, 14, 0.40);
+  --dark-a65: rgba(28, 14, 14, 0.65);
+  --dark-a72: rgba(28, 14, 14, 0.72);
+  --dark-a85: rgba(28, 14, 14, 0.85);
 
   /* ── Backgrounds ── */
-  --bg-main:    #FAF6ED;   /* Page warm cream */
-  --bg-surface: #F3ECE0;   /* Slightly deeper cream surface */
-  --bg-card:    #FFFFFF;   /* Card / modal white */
-  --bg-hero:    #4E0F17;   /* Hero deep red */
+  --bg-main: #FAF6ED;
+  /* Page warm cream */
+  --bg-surface: #F3ECE0;
+  /* Slightly deeper cream surface */
+  --bg-card: #FFFFFF;
+  /* Card / modal white */
+  --bg-hero: #4E0F17;
+  /* Hero deep red */
 
   /* ── Text ── */
-  --text-primary:   #1C1B1A;
+  --text-primary: #1C1B1A;
   --text-secondary: #5A4D4A;
-  --text-muted:     #8E7E7A;
-  --text-on-red:    #FFFFFF;
-  --text-on-gold:   #1C1B1A;
+  --text-muted: #8E7E7A;
+  --text-on-red: #FFFFFF;
+  --text-on-gold: #1C1B1A;
 
   /* ── Borders (gold-based) ── */
-  --border-light:  rgba(255, 210, 46, 0.10);
-  --border-base:   rgba(255, 210, 46, 0.18);
+  --border-light: rgba(255, 210, 46, 0.10);
+  --border-base: rgba(255, 210, 46, 0.18);
   --border-strong: rgba(255, 210, 46, 0.32);
 
   /* ── Legacy display-yellow aliases (kept for search bar compat) ── */
-  --display-yellow:        var(--bg-main);
-  --display-yellow-soft:   var(--bg-surface);
-  --display-yellow-pale:   #FCFAF5;
-  --display-yellow-row:    linear-gradient(135deg, #FFFFFF 0%, var(--bg-main) 100%);
-  --display-yellow-card:   linear-gradient(135deg, #FFFFFF 0%, var(--bg-main) 100%);
+  --display-yellow: var(--bg-main);
+  --display-yellow-soft: var(--bg-surface);
+  --display-yellow-pale: #FCFAF5;
+  --display-yellow-row: linear-gradient(135deg, #FFFFFF 0%, var(--bg-main) 100%);
+  --display-yellow-card: linear-gradient(135deg, #FFFFFF 0%, var(--bg-main) 100%);
   --display-yellow-border: var(--border-base);
 
   /* ── Border Radius ── */
-  --radius-sm:   12px;
-  --radius-md:   18px;
-  --radius-lg:   24px;
+  --radius-sm: 12px;
+  --radius-md: 18px;
+  --radius-lg: 24px;
   --radius-hero: 40px;
   --radius-full: 999px;
 
   /* Legacy radius aliases */
-  --radius-xl:  var(--radius-md);
+  --radius-xl: var(--radius-md);
   --radius-2xl: var(--radius-lg);
   --radius-3xl: 32px;
   --radius-4xl: var(--radius-hero);
 
   /* ── Shadows (unified base) ── */
-  --shadow-card:     0 10px 30px rgba(212, 10, 37, 0.05);
+  --shadow-card: 0 10px 30px rgba(212, 10, 37, 0.05);
   --shadow-floating: 0 16px 40px rgba(212, 10, 37, 0.09);
-  --shadow-button:   0 6px 20px  rgba(212, 10, 37, 0.22);
-  --shadow-gold:     0 6px 20px  rgba(255, 210, 46, 0.25);
+  --shadow-button: 0 6px 20px rgba(212, 10, 37, 0.22);
+  --shadow-gold: 0 6px 20px rgba(255, 210, 46, 0.25);
 
   /* ── Transitions ── */
   --transition: 300ms cubic-bezier(0.16, 1, 0.3, 1);
 
   /* ── Legacy menu-* aliases ── */
-  --menu-bg:         var(--bg-main);
-  --menu-card-bg:    var(--bg-card);
-  --menu-border:     var(--border-base);
-  --menu-text:       var(--text-primary);
+  --menu-bg: var(--bg-main);
+  --menu-card-bg: var(--bg-card);
+  --menu-border: var(--border-base);
+  --menu-text: var(--text-primary);
   --menu-text-muted: var(--text-muted);
-  --menu-primary:    var(--brand-red);
-  --border-color:    var(--border-base);
-  --bg-main-ref:     var(--bg-main);
+  --menu-primary: var(--brand-red);
+  --border-color: var(--border-base);
+  --bg-main-ref: var(--bg-main);
 }
 
 /* ==========================================================
@@ -227,6 +241,22 @@ body {
   overflow-x: hidden;
 }
 
+button,
+input,
+select,
+textarea {
+  font-family: 'IBM Plex Sans Arabic', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'IBM Plex Sans Arabic', sans-serif;
+}
+
 .menu-wrapper {
   font-family: 'IBM Plex Sans Arabic', sans-serif;
 }
@@ -244,7 +274,7 @@ body {
   display: none;
 }
 
-.category-display-panel > * {
+.category-display-panel>* {
   position: relative;
   z-index: 1;
 }
@@ -306,6 +336,7 @@ body {
     opacity: 0;
     transform: translateY(14px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -322,6 +353,7 @@ body {
     opacity: 0;
     transform: translateY(10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -338,6 +370,7 @@ body {
     opacity: 0;
     transform: translateY(24px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -350,9 +383,12 @@ body {
 
 /* Gentle float — used on hero logo */
 @keyframes brandFloat {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0px);
   }
+
   50% {
     transform: translateY(-8px);
   }
@@ -364,15 +400,20 @@ body {
 
 /* Gold shimmer — used on loading dots / accents */
 @keyframes goldShimmer {
-  0%   { background-position: -200% center; }
-  100% { background-position:  200% center; }
+  0% {
+    background-position: -200% center;
+  }
+
+  100% {
+    background-position: 200% center;
+  }
 }
 
 .animate-goldShimmer {
   background: linear-gradient(90deg,
-    var(--brand-gold) 0%,
-    #fff3a0 40%,
-    var(--brand-gold) 80%);
+      var(--brand-gold) 0%,
+      #fff3a0 40%,
+      var(--brand-gold) 80%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -382,8 +423,15 @@ body {
 
 /* Pulse scale — subtle CTA pulse */
 @keyframes pulseScale {
-  0%, 100% { transform: scale(1);    }
-  50%       { transform: scale(1.04); }
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.04);
+  }
 }
 
 .animate-pulseScale {
@@ -392,25 +440,33 @@ body {
 
 /* Skeleton shimmer — unified brand colors */
 @keyframes skeletonShimmer {
-  0%   { background-position: -400px 0; }
-  100% { background-position:  400px 0; }
+  0% {
+    background-position: -400px 0;
+  }
+
+  100% {
+    background-position: 400px 0;
+  }
 }
 
 .skeleton-shimmer {
   background: linear-gradient(90deg,
-    var(--red-a04)  25%,
-    var(--gold-a08) 50%,
-    var(--red-a04)  75%);
+      var(--red-a04) 25%,
+      var(--gold-a08) 50%,
+      var(--red-a04) 75%);
   background-size: 400px 100%;
   animation: skeletonShimmer 1.6s ease-in-out infinite;
 }
 
 /* Loading dots bounce */
 @keyframes dotBounce {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
     opacity: 0.4;
   }
+
   50% {
     transform: translateY(-6px);
     opacity: 1;
@@ -419,8 +475,13 @@ body {
 
 /* Ring spin */
 @keyframes spinRing {
-  from { transform: rotate(0deg);   }
-  to   { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* ==========================================================

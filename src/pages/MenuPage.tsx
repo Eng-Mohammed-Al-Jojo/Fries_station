@@ -226,14 +226,25 @@ export default function MenuPage() {
           {/* Creates the smooth transition from red hero → cream content */}
           <div
             className="relative w-full pointer-events-none"
-            style={{ marginTop: "32px", height: "80px", overflow: "hidden" }}
+            style={{
+              marginTop: "32px",
+              height: "80px",
+              overflow: "hidden",
+              background: "linear-gradient(to top, var(--bg-main) 8px, transparent 8px)"
+            }}
             aria-hidden="true"
           >
             <svg
               viewBox="0 0 1440 80"
               xmlns="http://www.w3.org/2000/svg"
               preserveAspectRatio="none"
-              style={{ display: "block", width: "100%", height: "100%" }}
+              style={{
+                display: "block",
+                width: "100%",
+                height: "100%",
+                transform: "scaleY(1.08)",
+                transformOrigin: "top"
+              }}
             >
               <path
                 d="M0,30 C360,75 1080,0 1440,40 L1440,80 L0,80 Z"

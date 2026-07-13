@@ -84,7 +84,8 @@ export default function CategorySection({
             style={{
               fontSize: "clamp(22px, 5.5vw, 30px)",
               color: "var(--brand-red)",
-              fontFamily: "IBM Plex Sans Arabic, sans-serif",
+              fontFamily: "Alexandria, sans-serif",
+              fontWeight: 600,
             }}
           >
             {catName}

@@ -190,9 +190,9 @@ const ItemCard = React.memo(({ item, orderSystem, onClick, onDetailsClick }: Pro
               <div
                 key={idx}
                 className={`flex items-baseline gap-0.5 font-black
-                  ${prices.length > 1 ? "text-[14px]" : "text-[17px]"} leading-none`}
+                  ${prices.length > 1 ? "text-[16px]" : "text-[17px]"} leading-none`}
               >
-                <span className="text-[10px] font-bold opacity-70">₪</span>
+                <span className="text-[11px] font-bold opacity-70">₪</span>
                 {price}
               </div>
             ))}

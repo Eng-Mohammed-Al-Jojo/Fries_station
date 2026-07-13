@@ -92,7 +92,7 @@ export default function ItemDetailsDrawer({ item, isOpen, onClose, orderSystem =
         background: "var(--bg-card)",
         color: "var(--text-primary)",
         border: "1px solid var(--border-base)",
-        fontFamily: "IBM Plex Sans Arabic",
+        fontFamily: "Cairo",
         fontWeight: "bold",
         fontSize: "14px",
       },
@@ -216,8 +216,8 @@ export default function ItemDetailsDrawer({ item, isOpen, onClose, orderSystem =
             >
               {/* 1. Product Name */}
               <h2
-                className="font-black leading-tight"
-                style={{ fontSize: "30px", color: "var(--text-primary)" }}
+                className="font-semibold leading-tight"
+                style={{ fontSize: "30px", color: "var(--text-primary)", fontFamily: "Alexandria", fontWeight: 600 }}
               >
                 {itemName}
               </h2>
@@ -239,6 +239,7 @@ export default function ItemDetailsDrawer({ item, isOpen, onClose, orderSystem =
                       letterSpacing: "0.05em",
                       display: "block",
                       marginBottom: "10px",
+                      fontFamily: "Cairo",
                     }}
                   >
                     {t("admin.ingredients_label") || "المكونات"}
@@ -250,8 +251,8 @@ export default function ItemDetailsDrawer({ item, isOpen, onClose, orderSystem =
                         style={{ display: "flex", alignItems: "center", gap: "10px", justifyContent: "flex-end" }}
                       >
                         <span
-                          className="font-semibold"
-                          style={{ fontSize: "14px", color: "var(--text-secondary)" }}
+                          className="font-medium"
+                          style={{ fontSize: "14px", color: "var(--text-secondary)", fontFamily: "Cairo", fontWeight: 500 }}
                         >
                           {ingredient}
                         </span>
@@ -261,7 +262,7 @@ export default function ItemDetailsDrawer({ item, isOpen, onClose, orderSystem =
                             height: "6px",
                             borderRadius: "50%",
                             background: "var(--brand-gold)",
-                            boxShadow: "0 0 5px rgba(245,197,24,0.6)",
+                            boxShadow: "0 0 5px rgba(255,210,46,0.6)",
                           }}
                         />
                       </div>
@@ -287,13 +288,14 @@ export default function ItemDetailsDrawer({ item, isOpen, onClose, orderSystem =
                       color: "var(--brand-red)",
                       display: "block",
                       marginBottom: "4px",
+                      fontFamily: "Cairo",
                     }}
                   >
                     {t("menu.notes") || "ملاحظات"}
                   </span>
                   <p
-                    className="leading-relaxed font-semibold"
-                    style={{ fontSize: "13px", color: "var(--text-secondary)" }}
+                    className="leading-relaxed font-medium"
+                    style={{ fontSize: "13px", color: "var(--text-secondary)", fontFamily: "Cairo", fontWeight: 500 }}
                   >
                     {itemNotes}
                   </p>
@@ -310,19 +312,26 @@ export default function ItemDetailsDrawer({ item, isOpen, onClose, orderSystem =
                     fontWeight: 800,
                     color: "var(--text-muted)",
                     letterSpacing: "0.05em",
+                    fontFamily: "Cairo",
                   }}
                 >
                   {t("common.price") || "السعر"}
                 </span>
-                <span
-                  className="font-black"
-                  style={{
-                    fontSize: "26px",
-                    color: "var(--brand-red)",
-                  }}
+                <div
+                  className="flex flex-wrap items-baseline gap-1.5 font-black"
+                  style={{ color: "var(--brand-red)" }}
                 >
-                  {String(item.price).split(",")[0]} ₪
-                </span>
+                  {String(item.price).split(",").map((p) => p.trim()).filter(Boolean).map((price, idx) => (
+                    <div
+                      key={idx}
+                      className={`flex items-baseline gap-0.5 font-black ${String(item.price).split(",").length > 1 ? "text-[16px]" : "text-[26px]"} leading-none`}
+                      style={{ fontFamily: "Cairo" }}
+                    >
+                      <span className="text-[12px] font-bold opacity-70">₪</span>
+                      {price}
+                    </div>
+                  ))}
+                </div>
               </div>
 
               {/* 7. Availability Badge */}
