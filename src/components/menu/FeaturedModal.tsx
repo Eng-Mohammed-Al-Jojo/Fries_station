@@ -38,7 +38,11 @@ export default function FeaturedModal({
             transition={{ duration: 0.3 }}
             onClick={onClose}
             className="absolute inset-0"
-            style={{ background: "rgba(26,10,10,0.85)", backdropFilter: "blur(12px)" }}
+            style={{
+              background: "var(--dark-a85)",
+              backdropFilter: "blur(12px)",
+              WebkitBackdropFilter: "blur(12px)",
+            }}
           />
 
           {/* Modal Container */}
@@ -48,13 +52,12 @@ export default function FeaturedModal({
             exit={{ scale: 0.95, opacity: 0, y: 20 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
             className="relative flex flex-col w-full h-full sm:h-auto"
-            style={{
-              maxWidth: "1100px",
-            }}
+            style={{ maxWidth: "1100px" }}
           >
             {/* Header */}
             <div className="flex items-center justify-between px-6 pt-8 pb-4 sm:p-0 sm:mb-6">
               <div className="flex items-center gap-3">
+                {/* Gold icon disc */}
                 <div
                   className="flex items-center justify-center shrink-0"
                   style={{
@@ -62,7 +65,7 @@ export default function FeaturedModal({
                     height: "48px",
                     borderRadius: "var(--radius-md)",
                     background: "var(--brand-gold)",
-                    boxShadow: "0 4px 20px rgba(245,197,24,0.40)",
+                    boxShadow: "0 4px 20px var(--gold-a40)",
                   }}
                 >
                   <HiStar size={24} color="var(--brand-dark)" />
@@ -92,13 +95,13 @@ export default function FeaturedModal({
               <button
                 onClick={onClose}
                 aria-label="إغلاق"
-                className="flex items-center justify-center"
+                className="flex items-center justify-center transition-all duration-200"
                 style={{
                   width: "44px",
                   height: "44px",
                   borderRadius: "var(--radius-full)",
-                  background: "rgba(255,255,255,0.1)",
-                  border: "1.5px solid rgba(255,255,255,0.2)",
+                  background: "rgba(255,255,255,0.10)",
+                  border: "1.5px solid rgba(255,255,255,0.18)",
                   color: "white",
                   cursor: "pointer",
                   transition: "all var(--transition)",
@@ -109,8 +112,8 @@ export default function FeaturedModal({
                   (e.currentTarget as HTMLButtonElement).style.transform = "rotate(90deg)";
                 }}
                 onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLButtonElement).style.background = "rgba(255,255,255,0.1)";
-                  (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(255,255,255,0.2)";
+                  (e.currentTarget as HTMLButtonElement).style.background = "rgba(255,255,255,0.10)";
+                  (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(255,255,255,0.18)";
                   (e.currentTarget as HTMLButtonElement).style.transform = "rotate(0deg)";
                 }}
               >
@@ -118,9 +121,9 @@ export default function FeaturedModal({
               </button>
             </div>
 
-            {/* Carousel Container */}
+            {/* Carousel */}
             <div
-              className="flex-1 w-full overflow-x-auto overflow-y-hidden custom-scrollbar hide-scrollbar-mobile"
+              className="flex-1 w-full overflow-x-auto overflow-y-hidden custom-scrollbar"
               style={{
                 scrollSnapType: "x mandatory",
                 WebkitOverflowScrolling: "touch",
@@ -152,8 +155,8 @@ export default function FeaturedModal({
                         height: "480px",
                         borderRadius: "var(--radius-hero)",
                         background: "var(--bg-card)",
-                        border: "1px solid rgba(245,197,24,0.3)",
-                        boxShadow: "0 24px 48px rgba(0,0,0,0.4)",
+                        border: "1.5px solid var(--gold-a25)",
+                        boxShadow: "0 24px 48px var(--dark-a72)",
                         overflow: "hidden",
                         opacity: unavailable ? 0.6 : 1,
                         transition: "transform var(--transition), box-shadow var(--transition)",
@@ -162,12 +165,12 @@ export default function FeaturedModal({
                       onMouseEnter={(e) => {
                         if (unavailable) return;
                         (e.currentTarget as HTMLDivElement).style.transform = "translateY(-8px)";
-                        (e.currentTarget as HTMLDivElement).style.boxShadow = "0 32px 64px rgba(0,0,0,0.6)";
+                        (e.currentTarget as HTMLDivElement).style.boxShadow = "0 32px 64px var(--dark-a85)";
                       }}
                       onMouseLeave={(e) => {
                         if (unavailable) return;
                         (e.currentTarget as HTMLDivElement).style.transform = "translateY(0)";
-                        (e.currentTarget as HTMLDivElement).style.boxShadow = "0 24px 48px rgba(0,0,0,0.4)";
+                        (e.currentTarget as HTMLDivElement).style.boxShadow = "0 24px 48px var(--dark-a72)";
                       }}
                       onClick={() => {
                         if (unavailable) return;
@@ -185,13 +188,14 @@ export default function FeaturedModal({
                             (e.currentTarget as HTMLImageElement).src = "/logo.png";
                           }}
                         />
+                        {/* Fade to card bg */}
                         <div
                           className="absolute inset-0"
                           style={{
                             background: "linear-gradient(to top, var(--bg-card) 0%, transparent 100%)",
                           }}
                         />
-                        
+
                         {/* Featured Badge */}
                         <div
                           className="absolute top-4 right-4 flex items-center gap-1"
@@ -202,7 +206,7 @@ export default function FeaturedModal({
                             borderRadius: "var(--radius-full)",
                             fontWeight: 800,
                             fontSize: "12px",
-                            boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
+                            boxShadow: "0 4px 12px rgba(0,0,0,0.20)",
                           }}
                         >
                           <HiStar size={14} />
@@ -211,7 +215,10 @@ export default function FeaturedModal({
 
                         {/* Sold Out Badge */}
                         {unavailable && (
-                          <div className="absolute inset-0 flex items-center justify-center" style={{ background: "rgba(0,0,0,0.6)" }}>
+                          <div
+                            className="absolute inset-0 flex items-center justify-center"
+                            style={{ background: "rgba(0,0,0,0.60)" }}
+                          >
                             <span className="font-black text-white text-xl tracking-widest border-2 border-white px-4 py-2 rounded-lg rotate-12">
                               {t("menu.sold_out") || "نفذت الكمية"}
                             </span>
@@ -220,7 +227,10 @@ export default function FeaturedModal({
                       </div>
 
                       {/* Content Area */}
-                      <div className="flex flex-col flex-1 p-6 z-10" style={{ background: "var(--bg-card)" }}>
+                      <div
+                        className="flex flex-col flex-1 p-6 z-10"
+                        style={{ background: "var(--bg-card)" }}
+                      >
                         <div className="flex-1">
                           <h3
                             className="font-black text-2xl leading-tight mb-2 text-right"
@@ -239,13 +249,20 @@ export default function FeaturedModal({
                         </div>
 
                         {/* Footer / Actions */}
-                        <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-200">
-                          <div className="flex items-baseline gap-1 font-black" style={{ color: "var(--brand-red)", fontSize: "22px" }}>
+                        <div
+                          className="flex items-center justify-between mt-4 pt-4"
+                          style={{ borderTop: "1px solid var(--border-light)" }}
+                        >
+                          <div
+                            className="flex items-baseline gap-1 font-black"
+                            style={{ color: "var(--brand-red)", fontSize: "22px" }}
+                          >
                             <span style={{ fontSize: "14px", opacity: 0.7 }}>₪</span>
                             {prices[0]}
                           </div>
 
                           <div className="flex gap-2">
+                            {/* Details button */}
                             <button
                               onClick={(e) => {
                                 e.stopPropagation();
@@ -253,27 +270,32 @@ export default function FeaturedModal({
                                 onDetailsClick?.(item);
                                 onClose();
                               }}
-                              className="flex items-center justify-center"
+                              className="flex items-center justify-center transition-all duration-200"
                               style={{
                                 width: "42px",
                                 height: "42px",
                                 borderRadius: "var(--radius-full)",
-                                background: "rgba(0,0,0,0.05)",
-                                color: "var(--text-primary)",
+                                background: "var(--bg-surface)",
+                                border: "1.5px solid var(--border-light)",
+                                color: "var(--text-secondary)",
+                                cursor: "pointer",
                                 transition: "all var(--transition)",
                               }}
                               onMouseEnter={(e) => {
                                 (e.currentTarget as HTMLButtonElement).style.background = "var(--brand-gold)";
+                                (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--brand-gold)";
                                 (e.currentTarget as HTMLButtonElement).style.color = "var(--brand-dark)";
                               }}
                               onMouseLeave={(e) => {
-                                (e.currentTarget as HTMLButtonElement).style.background = "rgba(0,0,0,0.05)";
-                                (e.currentTarget as HTMLButtonElement).style.color = "var(--text-primary)";
+                                (e.currentTarget as HTMLButtonElement).style.background = "var(--bg-surface)";
+                                (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--border-light)";
+                                (e.currentTarget as HTMLButtonElement).style.color = "var(--text-secondary)";
                               }}
                             >
                               <FiInfo size={20} />
                             </button>
 
+                            {/* Add to order button */}
                             {canOrder && (
                               <button
                                 onClick={(e) => {
@@ -281,19 +303,21 @@ export default function FeaturedModal({
                                   onItemClick?.(item);
                                   onClose();
                                 }}
-                                className="flex items-center justify-center"
+                                className="flex items-center justify-center transition-all duration-200"
                                 style={{
                                   width: "42px",
                                   height: "42px",
                                   borderRadius: "var(--radius-full)",
                                   background: "var(--brand-red)",
                                   color: "white",
+                                  border: "none",
                                   boxShadow: "var(--shadow-button)",
+                                  cursor: "pointer",
                                   transition: "all var(--transition)",
                                 }}
                                 onMouseEnter={(e) => {
                                   (e.currentTarget as HTMLButtonElement).style.transform = "scale(1.1)";
-                                  (e.currentTarget as HTMLButtonElement).style.background = "var(--color-primary-600)";
+                                  (e.currentTarget as HTMLButtonElement).style.background = "var(--brand-red-dark)";
                                 }}
                                 onMouseLeave={(e) => {
                                   (e.currentTarget as HTMLButtonElement).style.transform = "scale(1)";
@@ -310,7 +334,10 @@ export default function FeaturedModal({
                   );
                 })
               ) : (
-                <div className="w-full h-full flex flex-col items-center justify-center" style={{ minHeight: "300px" }}>
+                <div
+                  className="w-full h-full flex flex-col items-center justify-center"
+                  style={{ minHeight: "300px" }}
+                >
                   <div style={{ fontSize: "64px", opacity: 0.2 }}>🌟</div>
                   <p className="mt-4 font-bold text-white text-lg">
                     {t("menu.no_featured") || "لا توجد أصناف مميزة حالياً"}

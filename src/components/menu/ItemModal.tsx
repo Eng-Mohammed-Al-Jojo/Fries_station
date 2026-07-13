@@ -49,7 +49,7 @@ export default function ItemModal({ item, isOpen, onClose }: Props) {
             transition={{ duration: 0.22 }}
             onClick={onClose}
             className="absolute inset-0"
-            style={{ background: "rgba(26,10,10,0.65)", backdropFilter: "blur(8px)" }}
+            style={{ background: "var(--dark-a65)", backdropFilter: "blur(8px)", WebkitBackdropFilter: "blur(8px)" }}
           />
 
           {/* Modal */}
@@ -63,7 +63,7 @@ export default function ItemModal({ item, isOpen, onClose }: Props) {
               maxWidth: "480px",
               borderRadius: "var(--radius-hero)",
               background: "var(--bg-card)",
-              boxShadow: "0 24px 64px rgba(26,10,10,0.30)",
+              boxShadow: "0 24px 64px var(--dark-a40)",
               border: "1px solid var(--border-light)",
             }}
           >
@@ -78,7 +78,7 @@ export default function ItemModal({ item, isOpen, onClose }: Props) {
                 width: "38px",
                 height: "38px",
                 borderRadius: "var(--radius-full)",
-                background: "rgba(26,10,10,0.40)",
+                background: "var(--dark-a40)",
                 backdropFilter: "blur(8px)",
                 border: "1px solid rgba(255,255,255,0.15)",
                 color: "white",
@@ -89,7 +89,7 @@ export default function ItemModal({ item, isOpen, onClose }: Props) {
                 (e.currentTarget as HTMLButtonElement).style.background = "var(--brand-red)";
               }}
               onMouseLeave={(e) => {
-                (e.currentTarget as HTMLButtonElement).style.background = "rgba(26,10,10,0.40)";
+                (e.currentTarget as HTMLButtonElement).style.background = "var(--dark-a40)";
               }}
             >
               <FiX size={18} />
@@ -110,7 +110,7 @@ export default function ItemModal({ item, isOpen, onClose }: Props) {
                 className="absolute inset-0"
                 style={{
                   background:
-                    "linear-gradient(to top, var(--bg-card) 0%, rgba(200,16,46,0.12) 50%, transparent 100%)",
+                    "linear-gradient(to top, var(--bg-card) 0%, var(--red-a12) 50%, transparent 100%)",
                 }}
               />
             </div>
@@ -282,7 +282,7 @@ export default function ItemModal({ item, isOpen, onClose }: Props) {
                   marginTop: "4px",
                 }}
                 onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLButtonElement).style.background = "var(--color-primary-600)";
+                  (e.currentTarget as HTMLButtonElement).style.background = "var(--brand-red-dark)";
                 }}
                 onMouseLeave={(e) => {
                   (e.currentTarget as HTMLButtonElement).style.background = "var(--brand-red)";

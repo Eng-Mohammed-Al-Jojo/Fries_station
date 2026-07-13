@@ -78,13 +78,13 @@ export default function MenuPage() {
                 borderRadius: "var(--radius-full)",
                 padding: "8px 16px",
                 color: "white",
-                boxShadow: "0 8px 24px rgba(200,16,46,0.3)",
+                boxShadow: "0 8px 24px rgba(212,10,37,0.28)",
                 fontWeight: 700,
                 fontSize: "14px",
                 letterSpacing: "0.05em",
                 cursor: "pointer",
               }}
-              whileHover={{ scale: 1.05, y: -2, boxShadow: "0 12px 32px rgba(200,16,46,0.4)" }}
+              whileHover={{ scale: 1.05, y: -2, boxShadow: "0 12px 32px rgba(212,10,37,0.38)" }}
               whileTap={{ scale: 0.95, y: 1 }}
             >
               <HiSparkles size={18} color="var(--brand-gold)" />
@@ -133,7 +133,7 @@ export default function MenuPage() {
             transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[420px] h-[420px] rounded-full pointer-events-none transform-gpu"
             style={{
-              background: "radial-gradient(circle, rgba(255,210,46,0.28) 0%, transparent 68%)",
+              background: "radial-gradient(circle, rgba(255,210,46,0.25) 0%, transparent 68%)",
             }}
           />
 
@@ -155,17 +155,17 @@ export default function MenuPage() {
                 animate={{ rotate: 360 }}
                 transition={{ duration: 24, repeat: Infinity, ease: "linear" }}
                 className="absolute inset-0 rounded-full pointer-events-none transform-gpu will-change-transform"
-                style={{ border: "1.5px solid rgba(255,210,46,0.22)", borderTopColor: "rgba(255,210,46,0.7)" }}
+                style={{ border: "1.5px solid rgba(255,210,46,0.20)", borderTopColor: "rgba(255,210,46,0.70)" }}
               />
               {/* Inner subtle ring */}
               <div
                 className="absolute inset-3 rounded-full pointer-events-none"
-                style={{ border: "1px dashed rgba(245,197,24,0.15)" }}
+                style={{ border: "1px dashed rgba(255,210,46,0.14)" }}
               />
               {/* Gold glow disk */}
               <div
                 className="absolute inset-6 rounded-full pointer-events-none"
-                style={{ background: "rgba(245,197,24,0.10)", filter: "blur(10px)" }}
+                style={{ background: "rgba(255,210,46,0.10)", filter: "blur(10px)" }}
               />
 
               {/* Logo image */}
@@ -177,7 +177,7 @@ export default function MenuPage() {
                 style={{
                   width: "130px",
                   height: "130px",
-                  filter: "drop-shadow(0 6px 24px rgba(245,197,24,0.50))",
+                  filter: "drop-shadow(0 6px 24px rgba(255,210,46,0.48))",
                 }}
                 src="/logo.png"
                 alt="Fries Station Logo"
@@ -249,7 +249,7 @@ export default function MenuPage() {
 
         <div
           className="flex-1 w-full max-w-6xl mx-auto px-0 md:px-6 pb-28"
-          style={{ marginTop: "-1px" }} /* flush against wave */
+          style={{ marginTop: "-2px", paddingTop: "2px" }} /* overlap wave seam — fixes iPad sub-pixel line */
         >
 
           <Menu

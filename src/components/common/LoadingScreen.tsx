@@ -34,7 +34,7 @@ export default function LoadingScreen({ visible, onExited }: Props) {
             transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
             className="absolute w-80 h-80 rounded-full pointer-events-none"
             style={{
-              background: "radial-gradient(circle, rgba(245,197,24,0.35) 0%, transparent 70%)",
+              background: "radial-gradient(circle, rgba(255,210,46,0.32) 0%, transparent 70%)",
             }}
           />
 
@@ -48,7 +48,7 @@ export default function LoadingScreen({ visible, onExited }: Props) {
                 transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
                 className="absolute inset-0 rounded-full pointer-events-none"
                 style={{
-                  border: "2px solid rgba(245,197,24,0.25)",
+                  border: "2px solid rgba(255,210,46,0.22)",
                   borderTopColor: "var(--brand-gold)",
                 }}
               />
@@ -59,14 +59,14 @@ export default function LoadingScreen({ visible, onExited }: Props) {
                 transition={{ duration: 7, repeat: Infinity, ease: "linear" }}
                 className="absolute inset-5 rounded-full pointer-events-none"
                 style={{
-                  border: "1.5px dashed rgba(245,197,24,0.20)",
+                  border: "1.5px dashed rgba(255,210,46,0.18)",
                 }}
               />
 
               {/* Gold glow disk */}
               <div
                 className="absolute inset-8 rounded-full"
-                style={{ background: "rgba(245,197,24,0.12)", filter: "blur(12px)" }}
+                style={{ background: "rgba(255,210,46,0.10)", filter: "blur(12px)" }}
               />
 
               {/* Logo */}
@@ -77,7 +77,7 @@ export default function LoadingScreen({ visible, onExited }: Props) {
                 src="/logo.png"
                 alt="Fries Station"
                 className="relative w-28 h-28 object-contain drop-shadow-2xl z-10"
-                style={{ filter: "drop-shadow(0 4px 20px rgba(245,197,24,0.45))" }}
+                style={{ filter: "drop-shadow(0 4px 20px rgba(255,210,46,0.42))" }}
               />
             </div>
 
@@ -138,7 +138,7 @@ export default function LoadingScreen({ visible, onExited }: Props) {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.5 }}
             className="absolute bottom-6 text-[10px] font-bold uppercase tracking-[0.5em]"
-            style={{ color: "rgba(245,197,24,0.6)" }}
+            style={{ color: "rgba(255,210,46,0.55)" }}
           >
             Fries Station
           </motion.div>

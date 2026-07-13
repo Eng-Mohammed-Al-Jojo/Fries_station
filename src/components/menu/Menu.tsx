@@ -339,7 +339,7 @@ export default function Menu({ onLoadingChange, onFeaturedCheck, onFeaturedItems
                     width: "26px",
                     height: "26px",
                     borderRadius: "var(--radius-full)",
-                    background: "rgba(200,16,46,0.08)",
+                    background: "var(--red-a08)",
                     color: "var(--text-muted)",
                     border: "none",
                     cursor: "pointer",
@@ -350,7 +350,7 @@ export default function Menu({ onLoadingChange, onFeaturedCheck, onFeaturedItems
                     (e.currentTarget as HTMLButtonElement).style.color = "white";
                   }}
                   onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLButtonElement).style.background = "rgba(200,16,46,0.08)";
+                    (e.currentTarget as HTMLButtonElement).style.background = "var(--red-a08)";
                     (e.currentTarget as HTMLButtonElement).style.color = "var(--text-muted)";
                   }}
                 >
@@ -389,12 +389,23 @@ export default function Menu({ onLoadingChange, onFeaturedCheck, onFeaturedItems
                   animate={{ opacity: 1, y: 0 }}
                   className="py-24 flex flex-col items-center justify-center text-center"
                 >
-                  <div className="w-24 h-24 rounded-full bg-gray-50 flex items-center justify-center text-5xl mb-6">
+                  <div
+                    className="w-24 h-24 rounded-full flex items-center justify-center text-5xl mb-6"
+                    style={{ background: "var(--bg-surface)" }}
+                  >
                     🍽️
                   </div>
                   <div className="space-y-2">
-                    <h3 className="text-2xl font-bold text-gray-900">{t('menu.empty_menu') || "القائمة قادمة قريباً"}</h3>
-                    <p className="text-gray-500 max-w-xs mx-auto">
+                    <h3
+                      className="text-2xl font-bold"
+                      style={{ color: "var(--text-primary)" }}
+                    >
+                      {t('menu.empty_menu') || "القائمة قادمة قريباً"}
+                    </h3>
+                    <p
+                      className="max-w-xs mx-auto"
+                      style={{ color: "var(--text-muted)" }}
+                    >
                       {t('menu.empty_menu_desc') || "نحن نقوم بتجهيز تشكيلتنا اللذيذة. يرجى التحقق مرة أخرى قريباً."}
                     </p>
                   </div>
@@ -429,7 +440,7 @@ export default function Menu({ onLoadingChange, onFeaturedCheck, onFeaturedItems
                             style={{
                               width: "32px",
                               height: "32px",
-                              border: "3.5px solid rgba(200,16,46,0.20)",
+                              border: "3.5px solid var(--red-a18)",
                               borderTopColor: "var(--brand-red)",
                               animation: "spin 0.75s linear infinite",
                             }}
@@ -474,7 +485,7 @@ export default function Menu({ onLoadingChange, onFeaturedCheck, onFeaturedItems
             transition: "background var(--transition), transform var(--transition)",
           }}
           onMouseEnter={(e) => {
-            (e.currentTarget as HTMLButtonElement).style.background = "var(--color-primary-600)";
+            (e.currentTarget as HTMLButtonElement).style.background = "var(--brand-red-dark)";
             (e.currentTarget as HTMLButtonElement).style.transform = "scale(1.08)";
           }}
           onMouseLeave={(e) => {

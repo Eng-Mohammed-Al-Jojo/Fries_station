@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { ref, push, update } from "firebase/database";
 import { db } from "../../firebase";
-import { FiEdit, FiTrash2, FiPlus, FiSearch, FiChevronDown, FiStar, FiImage, FiMinus, FiArrowUp, FiArrowDown, FiMove } from "react-icons/fi";
+import { FiEdit, FiTrash2, FiPlus, FiSearch, FiChevronDown, FiStar, FiImage, FiArrowUp, FiArrowDown, FiMove } from "react-icons/fi";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import {
@@ -76,21 +76,24 @@ const SortableItem: React.FC<{
         {/* Image */}
         <div className="relative group/img shrink-0">
           {item.image ? (
-            <div className="relative w-16 h-16 sm:w-24 sm:h-24 rounded-2xl overflow-hidden border border-gray-100 shadow-inner">
-              <img
-                src={item.image.startsWith('/') ? item.image : `/images/${item.image}`}
-                alt={item.nameAr || item.name}
-                className="w-full h-full object-cover group-hover/img:scale-110 transition-transform duration-700"
-                onError={(e) => { e.currentTarget.src = "/logo.png" }}
-              />
+            <>
+              <div className="relative w-16 h-16 sm:w-24 sm:h-24 rounded-2xl overflow-hidden border border-gray-100 shadow-inner">
+                <img
+                  src={item.image.startsWith('/') ? item.image : `/images/${item.image}`}
+                  alt={item.nameAr || item.name}
+                  className="w-full h-full object-cover group-hover/img:scale-110 transition-transform duration-700"
+                  onError={(e) => { e.currentTarget.src = "/logo.png" }}
+                />
+              </div>
 
               <button
                 onClick={() => removeImage(item.id)}
-                className="absolute -top-1.5 -right-1.5 w-6 h-6 sm:w-7 sm:h-7 bg-secondary text-white rounded-full flex items-center justify-center shadow-lg scale-0 group-hover/img:scale-100 transition-transform hover:bg-secondary-600"
+                className="absolute -top-1.5 -right-1.5 w-6 h-6 sm:w-7 sm:h-7 bg-red-500 text-white rounded-full flex items-center justify-center shadow-lg scale-100 lg:scale-0 lg:group-hover/img:scale-100 transition-all duration-200 hover:bg-red-600 hover:scale-110 active:scale-95 z-10"
+                title="حذف الصورة"
               >
-                <FiMinus size={14} />
+                <FiTrash2 size={12} />
               </button>
-            </div>
+            </>
           ) : (
             <button
               onClick={() => openGallery(item.id)}

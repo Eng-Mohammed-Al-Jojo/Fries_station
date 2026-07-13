@@ -60,27 +60,37 @@
 }
 
 /* ==========================================================
-   TAILWIND THEME — Fries Station Brand Palette
-   Primary:  #C8102E  (Brand Red)
-   Secondary: #1A0A0A (Brand Dark / Near-Black)
+   TAILWIND THEME — Fries Station Unified Design System
+   Primary:  #D40A25  (Brand Red)
+   Gold:     #FFD22E  (Brand Gold)
+   Dark:     #1C1B1A  (Brand Dark)
    ========================================================== */
 
 @theme {
-  /* === Brand Burgundy (Elevated Red) === */
-  --color-primary-50: #d40a25;
-  --color-primary-100: #fbe5e7;
-  --color-primary-200: #f7bec3;
-  --color-primary-300: #ee8c97;
-  --color-primary-400: #e05364;
-  --color-primary-500: #7D0E1C;
-  --color-primary-600: #680b16;
-  --color-primary-700: #550811;
-  --color-primary-800: #42050b;
-  --color-primary-900: #300206;
+  /* === Brand Red Scale — centered on #D40A25 === */
+  --color-primary-50:  #fce8eb;
+  --color-primary-100: #f8c4cb;
+  --color-primary-200: #f0848f;
+  --color-primary-300: #e84d5c;
+  --color-primary-400: #df2237;
+  --color-primary-500: #D40A25;  /* ← true brand red */
+  --color-primary-600: #b5091f;  /* ← hover/dark red */
+  --color-primary-700: #960818;  /* ← pressed red */
+  --color-primary-800: #780612;
+  --color-primary-900: #5a040d;
   --color-primary: var(--color-primary-500);
 
-  /* === Brand Charcoal (Dark Accent) === */
-  --color-secondary-50: #f6f6f6;
+  /* === Brand Gold Scale — centered on #FFD22E === */
+  --color-gold-50:  #fffbea;
+  --color-gold-100: #fff3c0;
+  --color-gold-200: #ffe780;
+  --color-gold-300: #FFD22E;  /* ← true brand gold */
+  --color-gold-400: #f0c010;
+  --color-gold-500: #d4a800;
+  --color-gold: var(--color-gold-300);
+
+  /* === Brand Dark Scale === */
+  --color-secondary-50:  #f6f6f6;
   --color-secondary-100: #e2e2e2;
   --color-secondary-200: #c1c1c1;
   --color-secondary-300: #939393;
@@ -92,89 +102,111 @@
   --color-secondary-900: #000000;
   --color-secondary: var(--color-secondary-500);
 
-  /* === Shadows === */
-  --shadow-card: 0 10px 30px rgba(125, 14, 28, 0.04);
-  --shadow-floating: 0 16px 40px rgba(125, 14, 28, 0.08);
-  --shadow-button: 0 6px 20px rgba(125, 14, 28, 0.20);
+  /* === Unified Shadow System — single rgba base: rgba(212,10,37,…) === */
+  --shadow-card:     0 10px 30px rgba(212, 10, 37, 0.05);
+  --shadow-floating: 0 16px 40px rgba(212, 10, 37, 0.09);
+  --shadow-button:   0 6px 20px  rgba(212, 10, 37, 0.22);
+  --shadow-gold:     0 6px 20px  rgba(255, 210, 46, 0.25);
 
-  /* Legacy aliases (kept for any remaining usages) */
+  /* Legacy aliases */
   --shadow-premium: var(--shadow-floating);
-  --shadow-soft: var(--shadow-card);
+  --shadow-soft:    var(--shadow-card);
 }
 
 /* ==========================================================
-   ROOT DESIGN TOKENS — Fries Station Redesign
+   ROOT DESIGN TOKENS — Unified Color System
+   Single source of truth. All components derive from here.
    ========================================================== */
 :root {
-  /* Brand */
-  --brand-red: #d40a25;
-  /* Premium Burgundy */
-  --brand-gold: #FFD22E;
-  /* Premium Metallic Gold */
-  --brand-gold-deep: #FFD22E;
-  --brand-dark: #1C1B1A;
-  /* Premium Charcoal */
-  --brand-cream: #FCFAF2;
-  /* Soft Ivory */
+  /* ── Brand Colors ── */
+  --brand-red:       #D40A25;   /* Primary action / CTA */
+  --brand-red-dark:  #b5091f;   /* Hover / pressed state */
+  --brand-red-deep:  #960818;   /* Active / focus ring */
+  --brand-gold:      #FFD22E;   /* Accent / featured / price */
+  --brand-gold-deep: #FFD22E;   /* Alias kept for compatibility */
+  --brand-dark:      #1C1B1A;   /* Text on gold / dark surfaces */
 
-  /* Backgrounds */
-  --bg-main: #FAF6ED;
-  /* Warm Cream background */
-  --bg-surface: #F3ECE0;
-  --bg-card: #FFFFFF;
-  /* Soft Ivory card surface */
-  --bg-hero: #4E0F17;
-  /* Deep Burgundy Hero */
-  --display-yellow: #FAF6ED;
-  /* Replaced saturated yellow */
-  --display-yellow-soft: #F9F4EA;
-  --display-yellow-pale: #FCFAF5;
-  --display-yellow-row: linear-gradient(135deg, #FFFFFF 0%, #FAF6ED 100%);
-  --display-yellow-card: linear-gradient(135deg, #FFFFFF 0%, #FAF6ED 100%);
-  --display-yellow-border: rgba(212, 175, 55, 0.16);
+  /* ── Semantic Alpha Tokens (unified rgba bases) ── */
+  /* Red alphas: all use rgb(212, 10, 37) */
+  --red-a04:   rgba(212, 10, 37, 0.04);
+  --red-a06:   rgba(212, 10, 37, 0.06);
+  --red-a08:   rgba(212, 10, 37, 0.08);
+  --red-a12:   rgba(212, 10, 37, 0.12);
+  --red-a18:   rgba(212, 10, 37, 0.18);
+  --red-a22:   rgba(212, 10, 37, 0.22);
+  --red-a30:   rgba(212, 10, 37, 0.30);
 
-  /* Text */
-  --text-primary: #1C1B1A;
+  /* Gold alphas: all use rgb(255, 210, 46) */
+  --gold-a08:  rgba(255, 210, 46, 0.08);
+  --gold-a12:  rgba(255, 210, 46, 0.12);
+  --gold-a18:  rgba(255, 210, 46, 0.18);
+  --gold-a25:  rgba(255, 210, 46, 0.25);
+  --gold-a30:  rgba(255, 210, 46, 0.30);
+  --gold-a40:  rgba(255, 210, 46, 0.40);
+
+  /* Dark alphas: use rgb(28, 27, 26) */
+  --dark-a40:  rgba(28, 14, 14, 0.40);
+  --dark-a65:  rgba(28, 14, 14, 0.65);
+  --dark-a72:  rgba(28, 14, 14, 0.72);
+  --dark-a85:  rgba(28, 14, 14, 0.85);
+
+  /* ── Backgrounds ── */
+  --bg-main:    #FAF6ED;   /* Page warm cream */
+  --bg-surface: #F3ECE0;   /* Slightly deeper cream surface */
+  --bg-card:    #FFFFFF;   /* Card / modal white */
+  --bg-hero:    #4E0F17;   /* Hero deep red */
+
+  /* ── Text ── */
+  --text-primary:   #1C1B1A;
   --text-secondary: #5A4D4A;
-  --text-muted: #8E7E7A;
-  --text-on-red: #FFFFFF;
-  --text-on-gold: #1C1B1A;
+  --text-muted:     #8E7E7A;
+  --text-on-red:    #FFFFFF;
+  --text-on-gold:   #1C1B1A;
 
-  /* Borders */
-  --border-light: rgba(212, 175, 55, 0.08);
-  --border-base: rgba(212, 175, 55, 0.15);
-  --border-strong: rgba(212, 175, 55, 0.30);
+  /* ── Borders (gold-based) ── */
+  --border-light:  rgba(255, 210, 46, 0.10);
+  --border-base:   rgba(255, 210, 46, 0.18);
+  --border-strong: rgba(255, 210, 46, 0.32);
 
-  /* Border radius */
-  --radius-sm: 12px;
-  --radius-md: 18px;
-  --radius-lg: 24px;
+  /* ── Legacy display-yellow aliases (kept for search bar compat) ── */
+  --display-yellow:        var(--bg-main);
+  --display-yellow-soft:   var(--bg-surface);
+  --display-yellow-pale:   #FCFAF5;
+  --display-yellow-row:    linear-gradient(135deg, #FFFFFF 0%, var(--bg-main) 100%);
+  --display-yellow-card:   linear-gradient(135deg, #FFFFFF 0%, var(--bg-main) 100%);
+  --display-yellow-border: var(--border-base);
+
+  /* ── Border Radius ── */
+  --radius-sm:   12px;
+  --radius-md:   18px;
+  --radius-lg:   24px;
   --radius-hero: 40px;
   --radius-full: 999px;
 
-  /* Legacy aliases */
-  --radius-xl: var(--radius-md);
+  /* Legacy radius aliases */
+  --radius-xl:  var(--radius-md);
   --radius-2xl: var(--radius-lg);
   --radius-3xl: 32px;
   --radius-4xl: var(--radius-hero);
 
-  /* Shadows */
-  --shadow-card: 0 10px 30px rgba(125, 14, 28, 0.04);
-  --shadow-floating: 0 16px 40px rgba(125, 14, 28, 0.08);
-  --shadow-button: 0 6px 20px rgba(125, 14, 28, 0.20);
+  /* ── Shadows (unified base) ── */
+  --shadow-card:     0 10px 30px rgba(212, 10, 37, 0.05);
+  --shadow-floating: 0 16px 40px rgba(212, 10, 37, 0.09);
+  --shadow-button:   0 6px 20px  rgba(212, 10, 37, 0.22);
+  --shadow-gold:     0 6px 20px  rgba(255, 210, 46, 0.25);
 
-  /* Transitions — one standard for every component */
+  /* ── Transitions ── */
   --transition: 300ms cubic-bezier(0.16, 1, 0.3, 1);
 
-  /* Legacy: menu-* variables pointing to brand tokens */
-  --menu-bg: var(--bg-main);
-  --menu-card-bg: var(--bg-card);
-  --menu-border: var(--border-base);
-  --menu-text: var(--text-primary);
+  /* ── Legacy menu-* aliases ── */
+  --menu-bg:         var(--bg-main);
+  --menu-card-bg:    var(--bg-card);
+  --menu-border:     var(--border-base);
+  --menu-text:       var(--text-primary);
   --menu-text-muted: var(--text-muted);
-  --menu-primary: var(--brand-red);
-  --border-color: var(--border-base);
-  --bg-main-ref: var(--bg-main);
+  --menu-primary:    var(--brand-red);
+  --border-color:    var(--border-base);
+  --bg-main-ref:     var(--bg-main);
 }
 
 /* ==========================================================
@@ -212,7 +244,7 @@ body {
   display: none;
 }
 
-.category-display-panel>* {
+.category-display-panel > * {
   position: relative;
   z-index: 1;
 }
@@ -224,11 +256,11 @@ body {
   background: rgba(255, 248, 231, 0.75);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(200, 16, 46, 0.12);
+  border: 1px solid var(--red-a12);
 }
 
 .glass-dark {
-  background: rgba(26, 10, 10, 0.70);
+  background: var(--dark-a65);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border: 1px solid rgba(255, 255, 255, 0.12);
@@ -247,12 +279,12 @@ body {
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(200, 16, 46, 0.20);
+  background: var(--red-a22);
   border-radius: var(--radius-full);
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: rgba(200, 16, 46, 0.40);
+  background: var(--red-a30);
 }
 
 .no-scrollbar {
@@ -274,7 +306,6 @@ body {
     opacity: 0;
     transform: translateY(14px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
@@ -291,7 +322,6 @@ body {
     opacity: 0;
     transform: translateY(10px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
@@ -308,7 +338,6 @@ body {
     opacity: 0;
     transform: translateY(24px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
@@ -321,12 +350,9 @@ body {
 
 /* Gentle float — used on hero logo */
 @keyframes brandFloat {
-
-  0%,
-  100% {
+  0%, 100% {
     transform: translateY(0px);
   }
-
   50% {
     transform: translateY(-8px);
   }
@@ -338,20 +364,15 @@ body {
 
 /* Gold shimmer — used on loading dots / accents */
 @keyframes goldShimmer {
-  0% {
-    background-position: -200% center;
-  }
-
-  100% {
-    background-position: 200% center;
-  }
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
 }
 
 .animate-goldShimmer {
   background: linear-gradient(90deg,
-      var(--brand-gold) 0%,
-      #fff8b0 40%,
-      var(--brand-gold) 80%);
+    var(--brand-gold) 0%,
+    #fff3a0 40%,
+    var(--brand-gold) 80%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -361,50 +382,35 @@ body {
 
 /* Pulse scale — subtle CTA pulse */
 @keyframes pulseScale {
-
-  0%,
-  100% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(1.04);
-  }
+  0%, 100% { transform: scale(1);    }
+  50%       { transform: scale(1.04); }
 }
 
 .animate-pulseScale {
   animation: pulseScale 2.2s ease-in-out infinite;
 }
 
-/* Skeleton shimmer */
+/* Skeleton shimmer — unified brand colors */
 @keyframes skeletonShimmer {
-  0% {
-    background-position: -400px 0;
-  }
-
-  100% {
-    background-position: 400px 0;
-  }
+  0%   { background-position: -400px 0; }
+  100% { background-position:  400px 0; }
 }
 
 .skeleton-shimmer {
   background: linear-gradient(90deg,
-      rgba(200, 16, 46, 0.04) 25%,
-      rgba(245, 197, 24, 0.08) 50%,
-      rgba(200, 16, 46, 0.04) 75%);
+    var(--red-a04)  25%,
+    var(--gold-a08) 50%,
+    var(--red-a04)  75%);
   background-size: 400px 100%;
   animation: skeletonShimmer 1.6s ease-in-out infinite;
 }
 
 /* Loading dots bounce */
 @keyframes dotBounce {
-
-  0%,
-  100% {
+  0%, 100% {
     transform: translateY(0);
     opacity: 0.4;
   }
-
   50% {
     transform: translateY(-6px);
     opacity: 1;
@@ -413,17 +419,12 @@ body {
 
 /* Ring spin */
 @keyframes spinRing {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
+  from { transform: rotate(0deg);   }
+  to   { transform: rotate(360deg); }
 }
 
 /* ==========================================================
-   SWIPER OVERRIDES — match brand
+   SWIPER OVERRIDES — unified brand
    ========================================================== */
 .swiper-pagination-bullet-active {
   background-color: var(--brand-red) !important;
@@ -432,7 +433,7 @@ body {
 .swiper-button-next,
 .swiper-button-prev {
   color: var(--brand-red) !important;
-  background: white;
+  background: var(--bg-card);
   box-shadow: var(--shadow-card);
   border-radius: var(--radius-full);
   width: 40px;
@@ -442,25 +443,6 @@ body {
 .swiper-button-next:after,
 .swiper-button-prev:after {
   font-size: 16px !important;
-}
-
-/* ==========================================================
-   ITEM ROW ENTRY ANIMATION
-   ========================================================== */
-@keyframes itemRowIn {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.item-row-animate {
-  animation: itemRowIn 0.28s ease forwards;
 }
 
 /* ==========================================================
@@ -475,254 +457,6 @@ body {
 }
 
 /* ==========================================================
-   ITEM ROW — Premium Alternating & Overlapping Layout (RTL & Responsive)
+   ITEM CARD — Tailwind handles all styles.
+   Legacy item-row CSS removed in previous refactor.
    ========================================================== */
-
-.item-row-outer {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  position: relative;
-  margin-bottom: 24px;
-}
-
-/* ── Overlapping Image Wrapper ── */
-.item-image-wrapper {
-  position: relative;
-  flex-shrink: 0;
-  width: 116px;
-  height: 116px;
-  z-index: 10;
-  transition: transform var(--transition);
-}
-
-.item-image-wrapper-inner {
-  width: 100%;
-  height: 100%;
-  border-radius: 20px;
-  overflow: hidden;
-  border: 2px solid rgba(212, 175, 55, 0.22);
-  box-shadow:
-    0 10px 24px rgba(125, 14, 28, 0.12),
-    0 4px 8px rgba(0, 0, 0, 0.04);
-  transition: box-shadow var(--transition), border-color var(--transition);
-}
-
-.item-image-wrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform var(--transition);
-}
-
-/* Hover scales image and enhances glow/shadow */
-.item-row-outer:not(.unavailable):hover .item-image-wrapper-inner {
-  border-color: var(--brand-gold);
-  box-shadow:
-    0 14px 32px rgba(125, 14, 28, 0.20),
-    0 6px 14px rgba(0, 0, 0, 0.08);
-}
-
-.item-row-outer:not(.unavailable):hover .item-image-wrapper img {
-  transform: scale(1.08);
-}
-
-/* ── Content Card ── */
-.item-card {
-  flex-grow: 1;
-  min-height: 98px;
-  border-radius: 22px;
-  background: var(--bg-card);
-  border: 1px solid rgba(212, 175, 55, 0.14);
-  box-shadow: var(--shadow-card);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  transition:
-    box-shadow var(--transition),
-    border-color var(--transition),
-    transform var(--transition);
-  overflow: hidden;
-  z-index: 1;
-}
-
-.item-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: linear-gradient(135deg,
-      rgba(252, 250, 242, 0.6) 0%,
-      transparent 60%,
-      rgba(125, 14, 28, 0.015) 100%);
-  pointer-events: none;
-}
-
-.item-row-outer:not(.unavailable):hover .item-card {
-  box-shadow: var(--shadow-floating);
-  border-color: rgba(212, 175, 55, 0.28);
-  transform: translateY(-2px);
-}
-
-/* ── Alternating Directions ── */
-
-/* Even items: image is at start (RTL: right, LTR: left) */
-.item-row-outer.image-start {
-  flex-direction: row;
-}
-
-.item-row-outer.image-start .item-image-wrapper {
-  margin-inline-end: -28px;
-}
-
-.item-row-outer.image-start .item-card {
-  padding-block: 16px;
-  padding-inline-start: 46px;
-  /* Space for overlapped image */
-  padding-inline-end: 20px;
-}
-
-/* Odd items: image is at end (RTL: left, LTR: right) */
-.item-row-outer.image-end {
-  flex-direction: row-reverse;
-}
-
-.item-row-outer.image-end .item-image-wrapper {
-  margin-inline-start: -28px;
-}
-
-.item-row-outer.image-end .item-card {
-  padding-block: 16px;
-  padding-inline-end: 46px;
-  /* Space for overlapped image */
-  padding-inline-start: 20px;
-}
-
-/* ── Card Edge Accent ── */
-.item-card-accent {
-  position: absolute;
-  top: 16px;
-  bottom: 16px;
-  width: 3.5px;
-  border-radius: var(--radius-full);
-  background: linear-gradient(to bottom,
-      var(--brand-gold),
-      var(--brand-red));
-  transition: opacity var(--transition);
-}
-
-.item-row-outer.image-start .item-card-accent {
-  inset-inline-start: 0;
-  inset-inline-end: auto;
-}
-
-.item-row-outer.image-end .item-card-accent {
-  inset-inline-end: 0;
-  inset-inline-start: auto;
-}
-
-/* ── Featured Stickers ── */
-.featured-sticker {
-  position: absolute;
-  top: -8px;
-  inset-inline-start: -8px;
-  background: linear-gradient(135deg, var(--brand-gold) 0%, var(--brand-gold-deep) 100%);
-  color: var(--brand-dark);
-  width: 26px;
-  height: 26px;
-  border-radius: var(--radius-full);
-  border: 2px solid var(--bg-card);
-  box-shadow: 0 4px 10px rgba(125, 14, 28, 0.16);
-  z-index: 20;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform var(--transition);
-}
-
-.item-row-outer:not(.unavailable):hover .featured-sticker {
-  transform: scale(1.12) rotate(12deg);
-}
-
-/* ── Unavailable State ── */
-.item-row-outer.unavailable {
-  opacity: 0.55;
-  cursor: not-allowed;
-}
-
-.item-row-outer.unavailable .item-card {
-  background: var(--display-yellow-soft);
-  border-color: var(--border-light);
-  box-shadow: none;
-}
-
-.item-row-outer.unavailable .item-image-wrapper-inner {
-  filter: grayscale(0.5);
-  border-color: var(--border-light);
-}
-
-/* ── Responsive adjustments — Tablet (<= 768px) ── */
-@media (max-width: 768px) {
-  .item-image-wrapper {
-    width: 104px;
-    height: 104px;
-  }
-
-  .item-row-outer.image-start .item-image-wrapper {
-    margin-inline-end: -22px;
-  }
-
-  .item-row-outer.image-start .item-card {
-    padding-inline-start: 36px;
-    padding-inline-end: 16px;
-  }
-
-  .item-row-outer.image-end .item-image-wrapper {
-    margin-inline-start: -22px;
-  }
-
-  .item-row-outer.image-end .item-card {
-    padding-inline-end: 36px;
-    padding-inline-start: 16px;
-  }
-}
-
-/* ── Responsive adjustments — Mobile (<= 480px) ── */
-@media (max-width: 480px) {
-  .item-row-outer {
-    margin-bottom: 20px;
-  }
-
-  .item-image-wrapper {
-    width: 86px;
-    height: 86px;
-  }
-
-  .item-row-outer.image-start .item-image-wrapper {
-    margin-inline-end: -18px;
-  }
-
-  .item-row-outer.image-start .item-card {
-    padding-inline-start: 28px;
-    padding-inline-end: 12px;
-    padding-block: 12px;
-  }
-
-  .item-row-outer.image-end .item-image-wrapper {
-    margin-inline-start: -18px;
-  }
-
-  .item-row-outer.image-end .item-card {
-    padding-inline-end: 28px;
-    padding-inline-start: 12px;
-    padding-block: 12px;
-  }
-
-  .featured-sticker {
-    top: -6px;
-    inset-inline-start: -6px;
-    width: 22px;
-    height: 22px;
-  }
-}

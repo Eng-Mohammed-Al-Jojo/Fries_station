@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import ItemRow from "./ItemRow";
+import ItemCard from "./ItemCard";
 import type { Category, Item, Subcategory } from "./Menu";
 import { motion } from "framer-motion";
 
@@ -65,14 +65,20 @@ export default function CategorySection({
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-80px" }}
-      className="w-full flex flex-col gap-8 pb-4 transform-gpu"
+      className="w-full flex flex-col gap-6 pb-4 transform-gpu"
     >
-      {/* ── Category Header Redesign ── */}
-      <div className="flex flex-col gap-2 pr-1" style={{ paddingBlockEnd: "8px" }}>
+      {/* ── Premium Category Header ── */}
+      <div className="flex flex-col gap-2 px-1">
         <div className="flex items-center gap-3">
-          {/* Diamond Ornament */}
-          <span className="text-[var(--brand-gold)] font-bold text-xl select-none" aria-hidden="true">✦</span>
-          
+          {/* Diamond ornament */}
+          <span
+            className="font-bold select-none shrink-0"
+            style={{ fontSize: "20px", color: "var(--brand-gold)" }}
+            aria-hidden="true"
+          >
+            ✦
+          </span>
+
           <h2
             className="font-extrabold leading-tight text-right"
             style={{
@@ -83,36 +89,40 @@ export default function CategorySection({
           >
             {catName}
           </h2>
-          
-          {/* Decorative line with dot */}
+
+          {/* Decorative trailing line */}
           <div className="flex-1 flex items-center gap-1.5" aria-hidden="true">
-            <div className="h-[1.5px] bg-gradient-to-l from-[var(--brand-gold)] to-transparent flex-grow opacity-60" />
-            <div className="w-1.5 h-1.5 rounded-full bg-[var(--brand-gold)] shrink-0 opacity-80" />
+            <div
+              className="h-[1.5px] flex-grow rounded-full opacity-50"
+              style={{ background: "linear-gradient(to left, var(--brand-gold), transparent)" }}
+            />
+            <div
+              className="w-1.5 h-1.5 rounded-full shrink-0 opacity-75"
+              style={{ background: "var(--brand-gold)" }}
+            />
           </div>
         </div>
-        
-        {/* Soft geometric accent block */}
-        <div 
-          className="h-[2px] bg-[var(--brand-gold)] rounded-full opacity-60" 
-          style={{ width: "40px", marginInlineStart: "28px" }} 
-          aria-hidden="true" 
+
+        {/* Gold underline accent */}
+        <div
+          className="h-[2px] rounded-full opacity-55"
+          style={{ width: "40px", marginInlineStart: "28px", background: "var(--brand-gold)" }}
+          aria-hidden="true"
         />
       </div>
 
-      {/* ── Items ── */}
-      <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-
-        {/* Main (no-sub) items */}
+      {/* ── Items Grid ── */}
+      <div className="flex flex-col gap-6">
+        {/* Main items (no subcategory) */}
         {groupedItems.noSubItems.length > 0 && (
-          <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-            {groupedItems.noSubItems.map((item, idx) => (
-              <ItemRow
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-5">
+            {groupedItems.noSubItems.map((item) => (
+              <ItemCard
                 key={item.id}
                 item={item}
                 orderSystem={orderSystem}
                 onClick={onItemClick}
                 onDetailsClick={onDetailsClick}
-                index={idx}
               />
             ))}
           </div>
@@ -120,22 +130,21 @@ export default function CategorySection({
 
         {/* Subcategories */}
         {activeSubcategories.map((sub) => (
-          <div key={sub.id} style={{ display: "flex", flexDirection: "column", gap: "24px", marginTop: "16px" }}>
-
+          <div key={sub.id} className="flex flex-col gap-4">
             {/* Subcategory divider */}
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-3">
               <div
-                className="flex-1 h-px"
+                className="flex-1 h-px rounded-full"
                 style={{ background: "rgba(212,10,37,0.14)" }}
                 aria-hidden="true"
               />
               <span
-                className="font-bold whitespace-nowrap"
+                className="font-bold whitespace-nowrap shrink-0"
                 style={{
                   fontSize: "11px",
                   paddingBlock: "6px",
                   paddingInline: "18px",
-                  borderRadius: "var(--radius-full)",
+                  borderRadius: "999px",
                   background: "var(--bg-card)",
                   color: "var(--brand-red)",
                   border: "1px solid rgba(212,10,37,0.12)",
@@ -147,22 +156,21 @@ export default function CategorySection({
                 {sub.nameAr}
               </span>
               <div
-                className="flex-1 h-px"
+                className="flex-1 h-px rounded-full"
                 style={{ background: "rgba(212,10,37,0.14)" }}
                 aria-hidden="true"
               />
             </div>
 
-            {/* Sub-items */}
-            <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-              {groupedItems.groups[sub.id].map((item, idx) => (
-                <ItemRow
+            {/* Sub-items grid */}
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-5">
+              {groupedItems.groups[sub.id].map((item) => (
+                <ItemCard
                   key={item.id}
                   item={item}
                   orderSystem={orderSystem}
                   onClick={onItemClick}
                   onDetailsClick={onDetailsClick}
-                  index={idx}
                 />
               ))}
             </div>
