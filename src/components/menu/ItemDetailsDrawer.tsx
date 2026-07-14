@@ -169,7 +169,7 @@ export default function ItemDetailsDrawer({ item, isOpen, onClose, orderSystem =
                 className="absolute inset-0"
                 style={{
                   background:
-                    "linear-gradient(to top, #FFF8E7 0%, rgba(200,16,46,0.15) 50%, rgba(26,10,10,0.3) 100%)",
+                    "linear-gradient(to top, #FFF8E7 0%, rgba(200,16,46,0.15) 10%, rgba(26,10,10,0.3) 50%)",
                 }}
               />
 
