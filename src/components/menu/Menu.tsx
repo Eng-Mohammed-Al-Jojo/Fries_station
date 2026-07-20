@@ -120,7 +120,7 @@ export default function Menu({ onLoadingChange, onFeaturedCheck, onFeaturedItems
         setOrderSystem(data.orderSystem);
 
         const availableWithItems = data.categories.filter((cat: any) =>
-          cat.available && data.items.some((i: any) => i.categoryId === cat.id)
+          cat.available !== false && cat.visible !== false && data.items.some((i: any) => i.categoryId === cat.id)
         );
 
         if (availableWithItems.length > 0 && (!activeCategoryId || activeCategoryId === "all")) {
@@ -164,20 +164,33 @@ export default function Menu({ onLoadingChange, onFeaturedCheck, onFeaturedItems
   }, [onLoadingChange]);
 
   /* ================= Derived Data (Optimized) ================= */
+  const visibleCategoryIds = useMemo(() => {
+    return new Set(
+      categories
+        .filter(cat => cat.visible !== false && cat.available !== false)
+        .map(cat => cat.id)
+    );
+  }, [categories]);
+
   const featuredItems = useMemo(() =>
     items
-      .filter(i => (i.star === true || (i as any).isFeatured === true))
+      .filter(i => {
+        if (!visibleCategoryIds.has(i.categoryId)) return false;
+        return (i.star === true || (i as any).isFeatured === true);
+      })
       .sort((a, b) => {
         if (a.visible === false && b.visible !== false) return 1;
         if (a.visible !== false && b.visible === false) return -1;
         return (a.order ?? 0) - (b.order ?? 0);
       }),
-    [items]
+    [items, visibleCategoryIds]
   );
 
   const availableCategories = useMemo(() => {
     return categories
       .filter(cat => {
+        // Must be visible and available
+        if (cat.visible === false || cat.available === false) return false;
         // Show category if it has at least one item, even if unavailable
         return items.some(i => i.categoryId === cat.id);
       })
@@ -189,6 +202,7 @@ export default function Menu({ onLoadingChange, onFeaturedCheck, onFeaturedItems
     if (!search) return [];
     return items
       .filter((item) => {
+        if (!visibleCategoryIds.has(item.categoryId)) return false;
         const name = (item.nameAr || item.name || "").toLowerCase();
         const ingredients = (item.ingredientsAr || item.ingredients || "").toLowerCase();
         return name.includes(search) || ingredients.includes(search);
@@ -198,7 +212,7 @@ export default function Menu({ onLoadingChange, onFeaturedCheck, onFeaturedItems
         if (a.visible !== false && b.visible === false) return -1;
         return (a.order ?? 0) - (b.order ?? 0);
       });
-  }, [items, searchTerm]);
+  }, [items, searchTerm, visibleCategoryIds]);
 
   /**
    * Pre-compute sorted items per category ONCE.
